@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_book_app/core/routes/app_routing.dart';
+
+import 'core/routes/routes.dart';
 
 class RecipesBookApp extends StatelessWidget {
-  const RecipesBookApp({super.key});
+  const RecipesBookApp({super.key, required this.appRouting});
 
+  final AppRouting appRouting;
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text(
-            'Recipes Book App',
-          ),
-        ),
-      ),
+      onGenerateRoute: appRouting.generateRoute,
+      initialRoute: Routes.splashScreen,
     );
   }
 }
