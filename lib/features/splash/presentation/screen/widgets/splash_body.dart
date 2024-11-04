@@ -24,7 +24,7 @@ class _SplashBodyState extends State<SplashBody>
 
   _startDelay() {
     Timer(
-      const Duration(seconds: 2),
+      const Duration(seconds: 3),
       _goNext,
     );
   }
