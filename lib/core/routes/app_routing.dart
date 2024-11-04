@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
+import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
+
 import 'package:recipes_book_app/features/details/presentation/screen/ui/details_screen.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
 import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
@@ -18,7 +20,15 @@ class AppRouting {
           builder: (_) => SplashScreen(),
         );
       case Routes.onBoardingScreen:
-        return PageRouteBuilder(
+         return MaterialPageRoute(
+          builder: (_) => OnBoardingScreen(),
+        );
+      case Routes.bottomBar:
+        return MaterialPageRoute(
+          builder: (_) => BottomNavBar(),
+        );
+
+         return PageRouteBuilder(
           transitionDuration: const Duration(seconds: 3),
           // Set the duration of the animation
           pageBuilder: (context, animation, secondaryAnimation) =>
@@ -38,7 +48,7 @@ class AppRouting {
             );
           },
         );
-      case Routes.homeScreen:
+       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => HomeScreen(),
         );
@@ -46,6 +56,7 @@ class AppRouting {
         return MaterialPageRoute(
           builder: (_) => DetailsScreen(),
         );
+ 
       case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (_) => SearchScreen(),
@@ -58,7 +69,7 @@ class AppRouting {
         return MaterialPageRoute(
           builder: (_) => LoginScreen(),
         );
-      default:
+       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Center(

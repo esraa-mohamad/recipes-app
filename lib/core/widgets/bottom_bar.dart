@@ -34,9 +34,21 @@ class BottomNavBarState extends State<BottomNavBar> {
       bottomNavigationBar: CurvedNavigationBar(
         key: bottomNavigationKey,
         items: <Widget>[
-          Icon(Icons.home, size: 30),
-          Icon(Icons.search, size: 30),
-          Icon(Icons.person, size: 30),
+          Icon(
+            Icons.home,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.search,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.person,
+            size: 30,
+            color: Colors.white,
+          ),
         ],
         color: AppColor.mainOrange,
         buttonBackgroundColor: AppColor.mainOrange,
