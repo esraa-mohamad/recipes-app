@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
+import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
 import 'package:recipes_book_app/features/on_boarding/data/onboarding_model.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -17,16 +18,18 @@ class OnBoardingScreen extends StatelessWidget {
         activeBulletColor: AppColor.mainOrange,
         inactiveBulletColor: Color(0xff9CA3AF),
         skipCallback: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text("Skip clicked"),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BottomNavBar(),
             ),
           );
         },
         finishCallback: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text("Finish clicked"),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BottomNavBar(),
             ),
           );
         },
