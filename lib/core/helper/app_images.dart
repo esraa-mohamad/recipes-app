@@ -12,3 +12,5 @@ class AppImages {
     static const String foodImg = '${AppConstants.imagePath}img.png';
 
  }
+  static const String mealImage = '${AppConstants.imagePath}meal_image.png';
+}
