@@ -9,8 +9,7 @@ class AppImages {
   static const String onBoarding2 = '${AppConstants.imagePath}onboarding2.png';
   static const String onBoarding3 = '${AppConstants.imagePath}onboarding3.png';
   static const String dotePoint = '${AppConstants.imagePath}point.png';
-    static const String foodImg = '${AppConstants.imagePath}img.png';
+  static const String foodImg = '${AppConstants.imagePath}img.png';
 
- }
-  static const String mealImage = '${AppConstants.imagePath}meal_image.png';
+  static String mealImage = '${AppConstants.imagePath}meal_image.png';
 }

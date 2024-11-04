@@ -9,8 +9,7 @@ class AppTextStyle{
 
   static  TextStyle font18DarkGreenSemiBold = TextStyle(
  
-    fontSize: 18,
- 
+  
     fontSize: 18.sp,
      color: AppColor.darkJungleGreen,
     fontWeight: FontWeightHelper.semiBold ,
@@ -18,18 +17,14 @@ class AppTextStyle{
   );
 
   static  TextStyle font16DarkGreenSemiBold = TextStyle(
-     fontSize: 16,
-     fontSize: 16.sp,
+      fontSize: 16.sp,
      color: AppColor.darkJungleGreen,
     fontWeight: FontWeightHelper.semiBold ,
     fontFamily: FontFamilyHelper.poppinsFont,
 
   );
 
-   static  TextStyle font14SlateGrayLight = TextStyle(
-    fontSize: 14,
-    color: AppColor.slateGray,
-    fontWeight: FontWeightHelper.light ,
+   
    static  TextStyle font14SlateGrayRegular = TextStyle(
     fontSize: 14.sp,
     color: AppColor.slateGray,
@@ -37,11 +32,13 @@ class AppTextStyle{
      fontFamily: FontFamilyHelper.poppinsFont,
 
   );
-
-     static  TextStyle font16SlateGrayLight = TextStyle(
-    fontSize: 16,
+    static  TextStyle font16SlateGrayRegular = TextStyle(
+    fontSize: 16.sp,
     color: AppColor.slateGray,
-    fontWeight: FontWeightHelper.light ,
+    fontWeight: FontWeightHelper.regular ,
+     fontFamily: FontFamilyHelper.poppinsFont,
+
+  );
    static  TextStyle font14OrangeMedium = TextStyle(
     fontSize: 14.sp,
     color: AppColor.mainOrange,
@@ -50,13 +47,7 @@ class AppTextStyle{
 
   );
 
-   static  TextStyle font14OrangeMedium = TextStyle(
-    fontSize: 14,
-    color: AppColor.mainOrange,
-    fontWeight: FontWeightHelper.medium ,
-    fontFamily: FontFamilyHelper.poppinsFont,
-
-  );
+  
 
   
    static  TextStyle font14CadetGreyRegular = TextStyle(

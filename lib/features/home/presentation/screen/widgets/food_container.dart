@@ -67,7 +67,7 @@ class FoodContainer extends StatelessWidget {
                           ),
                           Text(
                             '(4.1)',
-                            style: AppTextStyle.font14SlateGrayLight,
+                            style: AppTextStyle.font14SlateGrayRegular,
                           ),
                         ],
                       ),
@@ -84,7 +84,7 @@ class FoodContainer extends StatelessWidget {
                           ),
                           Text(
                             '15 min',
-                            style: AppTextStyle.font14SlateGrayLight,
+                            style: AppTextStyle.font14SlateGrayRegular,
                           ),
                         ],
                       ),

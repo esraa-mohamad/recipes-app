@@ -48,8 +48,7 @@ class MealDetails extends StatelessWidget {
           ),
           Text(
             'Indonesian Fried Chicken or Ayam Goreng, is a delicious and popular dish that showcases the vibrant flavors of Indonesian cuisine.' ,
-             style: AppTextStyle.font14SlateGrayLight
-             style: AppTextStyle.font14SlateGrayRegular
+              style: AppTextStyle.font14SlateGrayRegular
            ),
           SizedBox(
             height: 20,
@@ -95,8 +94,7 @@ class MealDetails extends StatelessWidget {
           RichText(
             text: TextSpan(
                 text:  'Egg noodles  :  ' ,
-                 style: AppTextStyle.font14SlateGrayLight,
-                  style: AppTextStyle.font14SlateGrayRegular,
+                   style: AppTextStyle.font14SlateGrayRegular,
                  children:[
                   TextSpan(
                     text:  '  300 gram' ,

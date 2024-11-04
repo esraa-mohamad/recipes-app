@@ -20,15 +20,7 @@ class AppRouting {
           builder: (_) => SplashScreen(),
         );
       case Routes.onBoardingScreen:
-         return MaterialPageRoute(
-          builder: (_) => OnBoardingScreen(),
-        );
-      case Routes.bottomBar:
-        return MaterialPageRoute(
-          builder: (_) => BottomNavBar(),
-        );
-
-         return PageRouteBuilder(
+           return PageRouteBuilder(
           transitionDuration: const Duration(seconds: 3),
           // Set the duration of the animation
           pageBuilder: (context, animation, secondaryAnimation) =>
@@ -48,6 +40,12 @@ class AppRouting {
             );
           },
         );
+      case Routes.bottomBar:
+        return MaterialPageRoute(
+          builder: (_) => BottomNavBar(),
+        );
+
+      
        case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => HomeScreen(),

@@ -13,7 +13,7 @@ class HeaderSection extends StatelessWidget {
       leading: Image.asset(AppImages.profile),
       title: Text(
         'Welcome, 👋🏻',
-        style: AppTextStyle.font16SlateGrayLight,
+        style: AppTextStyle.font16SlateGrayRegular,
       ),
       subtitle: Text(
         'Fatma Atef',

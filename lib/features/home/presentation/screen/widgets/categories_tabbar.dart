@@ -26,7 +26,7 @@ class CategoryTabbarState extends State<CategoryTabbar> {
                 isScrollable: true,
                 labelColor: Colors.black,
                 labelStyle: AppTextStyle.font16DarkGreenSemiBold,
-                unselectedLabelStyle: AppTextStyle.font16SlateGrayLight,
+                unselectedLabelStyle: AppTextStyle.font16SlateGrayRegular,
                 unselectedLabelColor: AppColor.slateGray,
                 indicator: UnderlineTabIndicator(
                   borderSide: BorderSide(
