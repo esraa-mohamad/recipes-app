@@ -7,6 +7,8 @@ import 'package:recipes_book_app/features/register/presentation/screen/ui/regist
 import 'package:recipes_book_app/features/search/presentation/screen/ui/search_screen.dart';
 import 'package:recipes_book_app/features/splash/presentation/screen/ui/splash_screen.dart';
 
+import '../../features/login/presentation/screen/ui/login_screen.dart';
+
 class AppRouting {
   Route? generateRoute(RouteSettings routesSettings) {
     //final arguments = routesSettings.arguments;
@@ -51,6 +53,10 @@ class AppRouting {
       case Routes.registerScreen:
         return MaterialPageRoute(
           builder: (_) => RegisterScreen(),
+        );
+        case Routes.loginScreen:
+        return MaterialPageRoute(
+          builder: (_) => LoginScreen(),
         );
       default:
         return MaterialPageRoute(

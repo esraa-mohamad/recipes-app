@@ -1,14 +1,16 @@
+
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipes_book_app/core/theme/app_text_style.dart';
-import 'package:recipes_book_app/features/register/presentation/screen/widgets/register_button.dart';
-import 'package:recipes_book_app/features/register/presentation/screen/widgets/register_form.dart';
+import 'package:recipes_book_app/features/login/presentation/screen/widgets/login_button.dart';
 
 import '../../../../../core/routes/routes.dart';
+import '../../../../../core/theme/app_text_style.dart';
+import 'login_form.dart';
 
-class RegisterBody extends StatelessWidget {
-  const RegisterBody({super.key});
+class LoginBody extends StatelessWidget {
+  const LoginBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,40 +28,40 @@ class RegisterBody extends StatelessWidget {
                 height: 50,
               ),
               Text(
-                'Sign Up',
+                'Sign In',
                 style: AppTextStyle.font30DarkGreenBold,
               ),
               SizedBox(
                 height: 12.h,
               ),
               Text(
-                'Create new account to continue',
+                'Enter email and password to login',
                 style: AppTextStyle.font14SlateGrayRegular,
               ),
               SizedBox(
-                height: 50.h,
+                height: 100.h,
               ),
-              RegisterForm(),
+              LoginForm(),
               SizedBox(
-                height: 50.h,
+                height: 80.h,
               ),
-              RegisterButton(),
+              LoginButton(),
               SizedBox(
-                height: 50.h,
+                height: 80.h,
               ),
               Center(
                 child: RichText(
                   text: TextSpan(
-                      text: 'Already have and account? ',
+                      text: 'Don\'t have and account? ',
                       style: AppTextStyle.font14SlateGrayRegular,
                       children: [
                         TextSpan(
-                            text: 'Login',
+                            text: 'Register',
                             style: AppTextStyle.font14OrangeMedium,
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.of(context)
-                                    .pushReplacementNamed(Routes.loginScreen);
+                                    .pushReplacementNamed(Routes.registerScreen);
                               })
                       ]),
                 ),

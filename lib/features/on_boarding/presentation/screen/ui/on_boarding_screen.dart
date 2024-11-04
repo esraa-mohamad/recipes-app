@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
-import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
 import 'package:recipes_book_app/features/on_boarding/data/onboarding_model.dart';
+
+import '../../../../../core/routes/routes.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -18,20 +19,10 @@ class OnBoardingScreen extends StatelessWidget {
         activeBulletColor: AppColor.mainOrange,
         inactiveBulletColor: Color(0xff9CA3AF),
         skipCallback: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => BottomNavBar(),
-            ),
-          );
+          Navigator.of(context).pushReplacementNamed(Routes.loginScreen);
         },
         finishCallback: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => BottomNavBar(),
-            ),
-          );
+          Navigator.of(context).pushReplacementNamed(Routes.loginScreen);
         },
       ),
     );
