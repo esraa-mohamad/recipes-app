@@ -51,4 +51,18 @@ class AppTextStyle{
     fontWeight: FontWeightHelper.medium ,
     fontFamily: FontFamilyHelper.poppinsFont,
   );
+
+  static  TextStyle font30DarkGreenBold = TextStyle(
+    fontSize: 30.sp,
+    color: AppColor.darkJungleGreen,
+    fontWeight: FontWeightHelper.bold ,
+    fontFamily: FontFamilyHelper.poppinsFont,
+  );
+
+  static  TextStyle font14WhiteSemiBold = TextStyle(
+    fontSize: 14.sp,
+    color: Colors.white,
+    fontWeight: FontWeightHelper.semiBold ,
+    fontFamily: FontFamilyHelper.poppinsFont,
+  );
 }
