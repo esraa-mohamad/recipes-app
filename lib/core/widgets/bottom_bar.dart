@@ -3,6 +3,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/screen/ui/search_screen.dart';
+import 'package:recipes_book_app/features/saved_screen/presentation/screen/ui/saved_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -18,7 +19,7 @@ class BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> screens = [
     HomeScreen(),
     SearchScreen(),
-    
+    SavedScreen(),
     Center(
       child: Text(
         'Profile Screen',
@@ -39,6 +40,11 @@ class BottomNavBarState extends State<BottomNavBar> {
           ),
           Icon(
             Icons.search,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.bookmark,
             size: 30,
             color: Colors.white,
           ),
