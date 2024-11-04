@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:recipes_book_app/core/helper/app_images.dart';
+import 'package:recipes_book_app/core/theme/app_text_style.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({
@@ -13,11 +13,11 @@ class HeaderSection extends StatelessWidget {
       leading: Image.asset(AppImages.profile),
       title: Text(
         'Welcome, 👋🏻',
-        style: TextStyle(),
+        style: AppTextStyle.font16SlateGrayLight,
       ),
       subtitle: Text(
         'Fatma Atef',
-        style: TextStyle(),
+        style: AppTextStyle.font16DarkGreenSemiBold,
       ),
       trailing: Image.asset(AppImages.notification),
     );

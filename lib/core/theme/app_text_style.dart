@@ -28,6 +28,14 @@ class AppTextStyle{
 
   );
 
+    static  TextStyle font16SlateGrayLight = TextStyle(
+    fontSize: 16,
+    color: AppColor.slateGray,
+    fontWeight: FontWeightHelper.light ,
+    fontFamily: FontFamilyHelper.poppinsFont,
+
+  );
+
   static  TextStyle font14OrangeMedium = TextStyle(
     fontSize: 14,
     color: AppColor.mainOrange,
@@ -35,4 +43,6 @@ class AppTextStyle{
     fontFamily: FontFamilyHelper.poppinsFont,
 
   );
+
+  
 }
