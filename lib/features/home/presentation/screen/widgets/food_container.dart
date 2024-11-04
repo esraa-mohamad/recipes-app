@@ -35,9 +35,22 @@ class FoodContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Spiced Fried Chicken',
-                    style: AppTextStyle.font18DarkGreenSemiBold,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Spiced Fried Chicken',
+                        style: AppTextStyle.font18DarkGreenSemiBold,
+                      ),
+                      Icon(
+                        Icons.bookmark,
+                        size: 20,
+                        color: AppColor.mainOrange,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
