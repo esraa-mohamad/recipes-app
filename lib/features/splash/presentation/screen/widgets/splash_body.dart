@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/core/helper/app_images.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 
@@ -32,7 +33,6 @@ class _SplashBodyState extends State<SplashBody>
     Navigator.of(context).pushReplacementNamed(Routes.onBoardingScreen);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,8 +41,8 @@ class _SplashBodyState extends State<SplashBody>
       child: Center(
           child: Image.asset(
         AppImages.splashLogo,
-        width: 85,
-        height: 85,
+        width: 85.h,
+        height: 85.h,
       )),
     );
   }
