@@ -63,6 +63,12 @@ class AppTextStyle {
     fontFamily: FontFamilyHelper.poppinsFont,
   );
 
+  static  TextStyle font16WhiteSemiBold = TextStyle(
+    fontSize: 16.sp,
+    color: Colors.white,
+    fontWeight: FontWeightHelper.semiBold ,
+    fontFamily: FontFamilyHelper.poppinsFont,
+  );
   static TextStyle font30DarkGreenBold = TextStyle(
     fontSize: 30.sp,
     color: AppColor.darkJungleGreen,

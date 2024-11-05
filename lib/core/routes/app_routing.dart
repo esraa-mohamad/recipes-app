@@ -5,6 +5,9 @@ import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
 
 import 'package:recipes_book_app/features/details/presentation/screen/ui/details_screen.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
+import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
+import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
+import '../di/dependency_injection.dart';
 import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
 import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
 import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
@@ -38,6 +41,10 @@ class AppRouting {
               position: Tween<Offset>(
                 begin: const Offset(1.0, 0.0), // Start from right side
                 end: Offset.zero, // Slide to the center
+              ).animate(curvedAnimation), child: child,
+            );
+          },
+        );
               ).animate(curvedAnimation),
               child: child,
             );
@@ -47,7 +54,6 @@ class AppRouting {
         return MaterialPageRoute(
           builder: (_) => BottomNavBar(),
         );
-
 
       case Routes.homeScreen:
         return MaterialPageRoute(
@@ -60,7 +66,11 @@ class AppRouting {
 
       case Routes.searchScreen:
         return MaterialPageRoute(
-          builder: (_) => SearchScreen(),
+          builder: (_) =>
+              BlocProvider(
+                create: (context) => getIt<SearchCubit>(),
+                child: SearchScreen(),
+              ),
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
