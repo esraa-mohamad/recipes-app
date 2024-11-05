@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
 
 import 'package:recipes_book_app/features/details/presentation/screen/ui/details_screen.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
+import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
 import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
+import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/screen/ui/register_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/screen/ui/search_screen.dart';
 import 'package:recipes_book_app/features/splash/presentation/screen/ui/splash_screen.dart';
@@ -20,7 +23,7 @@ class AppRouting {
           builder: (_) => SplashScreen(),
         );
       case Routes.onBoardingScreen:
-           return PageRouteBuilder(
+        return PageRouteBuilder(
           transitionDuration: const Duration(seconds: 3),
           // Set the duration of the animation
           pageBuilder: (context, animation, secondaryAnimation) =>
@@ -45,8 +48,8 @@ class AppRouting {
           builder: (_) => BottomNavBar(),
         );
 
-      
-       case Routes.homeScreen:
+
+      case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => HomeScreen(),
         );
@@ -54,26 +57,35 @@ class AppRouting {
         return MaterialPageRoute(
           builder: (_) => DetailsScreen(),
         );
- 
+
       case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (_) => SearchScreen(),
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
-          builder: (_) => RegisterScreen(),
+          builder: (_) =>
+              BlocProvider(
+                create: (context) => RegisterCubit(),
+                child: RegisterScreen(),
+              ),
         );
-        case Routes.loginScreen:
+      case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => LoginScreen(),
+          builder: (_) =>
+              BlocProvider(
+                create: (context) => LoginCubit(),
+                child: LoginScreen(),
+              ),
         );
-       default:
+      default:
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Center(
-              child: Text('No route defined for ${routesSettings.name}'),
-            ),
-          ),
+          builder: (_) =>
+              Scaffold(
+                body: Center(
+                  child: Text('No route defined for ${routesSettings.name}'),
+                ),
+              ),
         );
     }
   }
