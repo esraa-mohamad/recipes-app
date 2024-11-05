@@ -5,12 +5,10 @@ part 'api_error_model.g.dart';
 @JsonSerializable()
 class ApiErrorModel {
   final int? code;
-  @JsonKey(name: 'ErrorMessage')
+  @JsonKey(name: 'meals')
   final String? message;
-  @JsonKey(name: 'Error')
-  final List ?error;
 
-  ApiErrorModel({required this.message,  this.code , this.error, });
+  ApiErrorModel({required this.message,  this.code });
 
   factory ApiErrorModel.fromJson(Map<String, dynamic> json) =>
       _$ApiErrorModelFromJson(json);

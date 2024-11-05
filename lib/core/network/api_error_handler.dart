@@ -38,8 +38,7 @@ class ApiErrorHandler {
 
 ApiErrorModel _handleError(dynamic data) {
   return ApiErrorModel(
-    message: data['ErrorMessage'] ?? "Unknown error occurred",
+    message: data['meals'] ?? "Unknown error occurred",
     code: data['code'],
-    error: data['Error'],
   );
 }

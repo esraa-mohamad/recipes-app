@@ -10,4 +10,7 @@ class AppImages {
   static const String onBoarding3 = '${AppConstants.imagePath}onboarding3.png';
   static const String dotePoint = '${AppConstants.imagePath}point.png';
   static const String mealImage = '${AppConstants.imagePath}meal_image.png';
+
+  // fake image
+  static const String mealImageFake = 'https://www.foodandwine.com/thmb/-YlAbgibH2UAoArlUMUip0r9Rys=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/One-Pot-Lemongrass-Chicken-and-Coconut-Rice-Is-a-Stunner-FT-RECIPE0224-3819b7368af44fd394ba07e9c1c04444.jpg';
 }

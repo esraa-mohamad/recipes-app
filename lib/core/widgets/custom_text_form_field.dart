@@ -21,7 +21,7 @@ class CustomTextFormField extends StatelessWidget {
         this.focusedErrorBorder,
         this.obscureText,
         this.controller,
-        required this.validator});
+        required this.validator, this.onChanged});
 
   final String? hintText;
 
@@ -39,6 +39,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool? obscureText;
   final TextEditingController? controller;
   final Function(String?) validator;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +52,7 @@ class CustomTextFormField extends StatelessWidget {
       validator: (value) {
         return validator(value);
       },
+      onChanged:onChanged ,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: hintStyle ?? AppTextStyle.font14CadetGreyRegular,

@@ -3,10 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/core/helper/app_images.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
+import 'package:recipes_book_app/core/widgets/custom_image_network.dart';
+import 'package:recipes_book_app/features/search/data/model/search_model_response.dart';
 
 class SearchItem extends StatelessWidget {
-  const SearchItem({super.key});
+  const SearchItem({super.key, required this.mealsData});
 
+  final MealsData? mealsData;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,19 +28,14 @@ class SearchItem extends StatelessWidget {
               topLeft: Radius.circular(8.r),
               bottomLeft: Radius.circular(8.r),
             ),
-            child: Image.asset(
-              AppImages.mealImage,
-              width: 67.w,
-              height: 70.h,
-              fit: BoxFit.cover,
-            ),
+            child: CustomImageNetwork(imagePath: mealsData!.mealImage)
           ),
           SizedBox(
             width: 16.w,
           ),
           Expanded(
             child: Text(
-                'Javanese Fried Noodles' ,
+                mealsData!.mealName ,
               style: AppTextStyle.font14DarkGreenMedium,
               maxLines: 2,
               textAlign: TextAlign.center,

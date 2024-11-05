@@ -51,4 +51,11 @@ class AppTextStyle{
     fontWeight: FontWeightHelper.medium ,
     fontFamily: FontFamilyHelper.poppinsFont,
   );
+
+  static  TextStyle font16WhiteSemiBold = TextStyle(
+    fontSize: 16.sp,
+    color: Colors.white,
+    fontWeight: FontWeightHelper.semiBold ,
+    fontFamily: FontFamilyHelper.poppinsFont,
+  );
 }
