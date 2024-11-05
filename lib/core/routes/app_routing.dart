@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipes_book_app/core/di/dependency_injection.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
-
 import 'package:recipes_book_app/features/details/presentation/screen/ui/details_screen.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
 import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
 import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
@@ -48,10 +49,12 @@ class AppRouting {
           builder: (_) => BottomNavBar(),
         );
 
-
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) => HomeScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<HomeCubit>(),
+            child: HomeScreen(),
+          ),
         );
       case Routes.detailsScreen:
         return MaterialPageRoute(
@@ -64,28 +67,25 @@ class AppRouting {
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              BlocProvider(
-                create: (context) => RegisterCubit(),
-                child: RegisterScreen(),
-              ),
+          builder: (_) => BlocProvider(
+            create: (context) => RegisterCubit(),
+            child: RegisterScreen(),
+          ),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              BlocProvider(
-                create: (context) => LoginCubit(),
-                child: LoginScreen(),
-              ),
+          builder: (_) => BlocProvider(
+            create: (context) => LoginCubit(),
+            child: LoginScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(
-          builder: (_) =>
-              Scaffold(
-                body: Center(
-                  child: Text('No route defined for ${routesSettings.name}'),
-                ),
-              ),
+          builder: (_) => Scaffold(
+            body: Center(
+              child: Text('No route defined for ${routesSettings.name}'),
+            ),
+          ),
         );
     }
   }
