@@ -44,4 +44,18 @@ class RegisterCubit extends Cubit<RegisterState> {
     isConfirmPasswordObscure = !isConfirmPasswordObscure;
     emit(RegisterChangeConfirmPasswordObscure());
   }
+
+  // Dispose controllers
+  void disposeControllers() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+  }
+
+  @override
+  Future<void> close() {
+    disposeControllers();
+    return super.close();
+  }
 }
