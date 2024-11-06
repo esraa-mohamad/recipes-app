@@ -8,7 +8,7 @@ class DetailsCubit extends Cubit<DetailsState> {
   DetailsCubit(this.detailsRepo) : super(DetailsInitial());
 
   final DetailsRepo detailsRepo ;
-
+static DetailsCubit get(context) => BlocProvider.of(context);
   void getAllMealDetails(String id) async{
     var mealData = await detailsRepo.getMealDetails(id);
     mealData.fold((error){

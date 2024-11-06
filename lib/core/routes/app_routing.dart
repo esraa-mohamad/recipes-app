@@ -19,7 +19,7 @@ import '../../features/login/presentation/screen/ui/login_screen.dart';
 
 class AppRouting {
   Route? generateRoute(RouteSettings routesSettings) {
-    //final arguments = routesSettings.arguments;
+    final arguments = routesSettings.arguments;
     switch (routesSettings.name) {
       case Routes.splashScreen:
         return MaterialPageRoute(
@@ -66,12 +66,25 @@ class AppRouting {
       case Routes.detailsScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
+             key: ValueKey(arguments), 
             create: (context) =>
-                getIt<DetailsCubit>()..getAllMealDetails("52787"),
+getIt<DetailsCubit>()
+                  ..getAllMealDetails(arguments as String),
             child: DetailsScreen(),
           ),
         );
-
+         case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) =>
+              BlocProvider(
+                create: (_) => getIt<SearchCubit>(),
+                child: SearchScreen(),
+              ),
+        );
+ case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (_) => HomeScreen(),
+        );
       case Routes.registerScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
