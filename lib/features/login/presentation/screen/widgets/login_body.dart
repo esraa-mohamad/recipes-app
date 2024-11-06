@@ -23,7 +23,7 @@ class LoginBody extends StatelessWidget {
           loadingDialog(context);
         }else if(state is LoginSuccess){
           Navigator.of(context).pop();
-          Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
+          Navigator.of(context).pushReplacementNamed(Routes.bottomBar);
         }else if(state is LoginFailed){
           Navigator.of(context).pop();
           errorDialog(context, state.message);

@@ -8,10 +8,17 @@ import 'package:recipes_book_app/features/details/data/repo/details_repo.dart';
 import 'package:recipes_book_app/features/details/presentation/manager/details_cubit.dart';
 import 'package:recipes_book_app/features/search/data/repo/search_repo.dart';
 import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../shared_pref/app_prefs.dart';
 
 final getIt = GetIt.instance;
 
-void setup() {
+void setup() async{
+  // apps prefs instance
+  final sharedPrefs = await SharedPreferences.getInstance();
+  getIt.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
+  getIt.registerLazySingleton<AppPreferences>(() => AppPreferences(getIt()));
   Dio dio = DioFactory.getDio();
   getIt.registerLazySingleton<ApiServices>(() => ApiServices(dio));
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(apiServices: getIt()));

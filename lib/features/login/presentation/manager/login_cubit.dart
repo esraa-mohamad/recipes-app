@@ -2,6 +2,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipes_book_app/core/di/dependency_injection.dart';
+import 'package:recipes_book_app/core/shared_pref/app_prefs.dart';
 
 import 'login_state.dart';
 
@@ -11,6 +13,8 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit get(context) => BlocProvider.of(context);
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final AppPreferences appPreferences = getIt<AppPreferences>();
+
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
@@ -25,6 +29,7 @@ class LoginCubit extends Cubit<LoginState> {
 
       }else {
         emit(LoginSuccess());
+        appPreferences.setUserLoggedIn();
       }
       return userCredential.user;
     }catch(error){
