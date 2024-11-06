@@ -1,24 +1,24 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
- import 'package:recipes_book_app/core/routes/routes.dart';
+import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
-import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.dart';
-import 'package:recipes_book_app/features/home/presentation/manager/home_state.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_cubit.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_state.dart';
 
 class FoodContainer extends StatelessWidget {
   const FoodContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<FoodCubit, FoodState>(
       builder: (context, state) {
-        if (state is HomeFoodLoadingState) {
+        if (state is FoodLoadingState) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (state is HomeFoodSuccessState) {
+        } else if (state is FoodSuccessState) {
           final food = state.foodModel.foodData;
           log('${food.length}');
           if (food.isEmpty) {
@@ -56,16 +56,17 @@ class FoodContainer extends StatelessWidget {
                           height: 20,
                         ),
                         Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Text(
                                       food[index].name,
                                       maxLines: 2,
                                       style: AppTextStyle
@@ -74,60 +75,17 @@ class FoodContainer extends StatelessWidget {
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
-                                    Icon(
-                                      Icons.bookmark,
-                                      size: 20,
-                                      color: AppColor.mainOrange,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star_rounded,
-                                          size: 20,
-                                          color: AppColor.mainOrange,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          '(4.1)',
-                                          style: AppTextStyle
-                                              .font14SlateGrayRegular,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Icon(
-                                          Icons.watch_later_outlined,
-                                          size: 20,
-                                          color: AppColor.slateGray,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          '15 min',
-                                          style: AppTextStyle
-                                              .font14SlateGrayRegular,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )),
+                                  ),
+                                  Icon(
+                                    Icons.bookmark,
+                                    size: 20,
+                                    color: AppColor.mainOrange,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -135,7 +93,7 @@ class FoodContainer extends StatelessWidget {
               },
             ),
           );
-        } else if (state is HomeFoodFailureState) {
+        } else if (state is FoodFailureState) {
           return const Center(
             child: Text('Failed to load categories.'),
           );

@@ -1,12 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/core/widgets/custom_error_message.dart';
 import 'package:recipes_book_app/features/details/presentation/manager/details_cubit.dart';
 import 'package:recipes_book_app/features/details/presentation/manager/details_state.dart';
-import 'package:recipes_book_app/features/details/presentation/screen/widgets/show_youtube_video.dart';
+import 'package:recipes_book_app/features/details/presentation/screen/widgets/meals_details_list_view.dart';
 
-import 'meal_details.dart';
 
 class MealsDetailsDataBlocBuilder extends StatelessWidget {
   const MealsDetailsDataBlocBuilder({super.key});
@@ -20,7 +20,7 @@ class MealsDetailsDataBlocBuilder extends StatelessWidget {
               child: CircularProgressIndicator(color: AppColor.mainOrange,),
             );
           }else if(state is DetailsSuccess){
-            return getMealsDetailsData(state.mealsModelResponse.mealsDetails![0]);
+            return getMealsDetailsData(state.mealsModelResponse);
           }else if(state is DetailsFailed){
             return Center(child: CustomMessage(error: state.apiErrorModel.message.toString()));
           }else{
@@ -32,16 +32,7 @@ class MealsDetailsDataBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget getMealsDetailsData(mealsDetails){
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ShowYoutubeVideo(mealsDetails: mealsDetails,),
-        SizedBox(
-          height: 24,
-        ),
-        MealDetails(mealDetails: mealsDetails,),
-      ],
-    );
+  Widget getMealsDetailsData(mealsModelResponse){
+    return MealsDetailsListView(mealsModelResponse: mealsModelResponse);
   }
 }

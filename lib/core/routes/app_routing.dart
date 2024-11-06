@@ -5,7 +5,9 @@ import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
 import 'package:recipes_book_app/features/details/presentation/manager/details_cubit.dart';
 import 'package:recipes_book_app/features/details/presentation/screen/ui/details_screen.dart';
-import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/category_cubit/category_cubit.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/area_cubit/area_cubit.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
 import 'package:recipes_book_app/features/meals_screen/presentation/manager/meals_cubit.dart';
 import 'package:recipes_book_app/features/meals_screen/presentation/screen/ui/meals_screen.dart';
@@ -62,8 +64,13 @@ class AppRouting {
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (_) => getIt<HomeCubit>()..getAllCategories(),
-                child: HomeScreen(),
+                create: (_) => getIt<CategoryCubit>()..getAllCategories(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<AreaCubit>()..getAllAreas(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<FoodCubit>(),
               ),
               BlocProvider(
                 create: (_) => getIt<SearchCubit>(),
@@ -77,12 +84,36 @@ class AppRouting {
       case Routes.detailsScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
+            key: ValueKey(arguments),
             create: (context) =>
-                getIt<DetailsCubit>()..getAllMealDetails("52787"),
+                getIt<DetailsCubit>()..getAllMealDetails(arguments as String),
             child: DetailsScreen(),
           ),
         );
-
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<SearchCubit>(),
+            child: SearchScreen(),
+          ),
+        );
+      case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => getIt<CategoryCubit>()..getAllCategories(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<AreaCubit>()..getAllAreas(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<FoodCubit>(),
+              ),
+            ],
+            child: HomeScreen(),
+          ),
+        );
       case Routes.registerScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -106,5 +137,5 @@ class AppRouting {
           ),
         );
     }
-   }
+  }
 }

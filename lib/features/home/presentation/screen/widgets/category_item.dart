@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
-import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.dart';
-import 'package:recipes_book_app/features/home/presentation/manager/home_state.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/category_cubit/category_cubit.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/category_cubit/category_state.dart';
 
 class CategoryItem extends StatefulWidget {
   const CategoryItem({super.key});
@@ -17,11 +17,11 @@ class CategoryItemState extends State<CategoryItem> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
-        if (state is HomeCategoryLoadingState) {
+        if (state is CategoryLoadingState) {
           return Center(child: CircularProgressIndicator());
-        } else if (state is HomeCategorySuccessState) {
+        } else if (state is CategorySuccessState) {
           final categories = state.categoryModel.categroyData;
 
           return Wrap(
@@ -58,7 +58,7 @@ class CategoryItemState extends State<CategoryItem> {
               );
             }).toList(),
           );
-        } else if (state is HomeCategoryFailureState) {
+        } else if (state is CategoryFailureState) {
           return Center(
             child: Text('Failed to load categories.'),
           );
