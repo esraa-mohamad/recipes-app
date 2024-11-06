@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipes_book_app/core/di/dependency_injection.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
 import 'package:recipes_book_app/features/details/presentation/manager/details_cubit.dart';
-
 import 'package:recipes_book_app/features/details/presentation/screen/ui/details_screen.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
 import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
-import '../di/dependency_injection.dart';
 import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/screen/ui/register_screen.dart';
@@ -41,39 +41,39 @@ class AppRouting {
               position: Tween<Offset>(
                 begin: const Offset(1.0, 0.0), // Start from right side
                 end: Offset.zero, // Slide to the center
-              ).animate(curvedAnimation), child: child,
+              ).animate(curvedAnimation),
+              child: child,
             );
           },
         );
       case Routes.bottomBar:
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
-              providers: [
-                BlocProvider(
-                    create: (_) => getIt<SearchCubit>(),
-                  child: SearchScreen(),
-                )
-              ],
-              child: BottomNavBar()
-          )
+            providers: [
+              BlocProvider(
+                create: (_) => getIt<HomeCubit>()..getAllFood('Indian'),
+                child: HomeScreen(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<SearchCubit>(),
+                child: SearchScreen(),
+              ),
+            ],
+            child: BottomNavBar(),
+          ),
         );
 
-      case Routes.homeScreen:
-        return MaterialPageRoute(
-          builder: (_) => HomeScreen(),
-        );
       case Routes.detailsScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              BlocProvider(
-                key: ValueKey(arguments), // Key that changes with each ID
-                create: (context) => getIt<DetailsCubit>()
+          builder: (_) => BlocProvider(
+             key: ValueKey(arguments), 
+            create: (context) =>
+getIt<DetailsCubit>()
                   ..getAllMealDetails(arguments as String),
-                child: DetailsScreen(),
-              ),
+            child: DetailsScreen(),
+          ),
         );
-
-      case Routes.searchScreen:
+         case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (_) =>
               BlocProvider(
@@ -81,30 +81,31 @@ class AppRouting {
                 child: SearchScreen(),
               ),
         );
+ case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (_) => HomeScreen(),
+        );
       case Routes.registerScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              BlocProvider(
-                create: (context) => RegisterCubit(),
-                child: RegisterScreen(),
-              ),
+          builder: (_) => BlocProvider(
+            create: (context) => RegisterCubit(),
+            child: RegisterScreen(),
+          ),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              BlocProvider(
-                create: (context) => LoginCubit(),
-                child: LoginScreen(),
-              ),
+          builder: (_) => BlocProvider(
+            create: (context) => LoginCubit(),
+            child: LoginScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(
-          builder: (_) =>
-              Scaffold(
-                body: Center(
-                  child: Text('No route defined for ${routesSettings.name}'),
-                ),
-              ),
+          builder: (_) => Scaffold(
+            body: Center(
+              child: Text('No route defined for ${routesSettings.name}'),
+            ),
+          ),
         );
     }
   }

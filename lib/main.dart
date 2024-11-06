@@ -6,7 +6,7 @@ import 'package:recipes_book_app/recipes_book_app.dart';
 import 'core/routes/app_routing.dart';
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
