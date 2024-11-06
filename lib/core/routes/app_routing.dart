@@ -9,7 +9,7 @@ import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.d
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
 import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
- import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
+import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/screen/ui/register_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/screen/ui/search_screen.dart';
@@ -41,42 +41,37 @@ class AppRouting {
               position: Tween<Offset>(
                 begin: const Offset(1.0, 0.0), // Start from right side
                 end: Offset.zero, // Slide to the center
-              ).animate(curvedAnimation), child: child,
+              ).animate(curvedAnimation),
+              child: child,
             );
           },
         );
       case Routes.bottomBar:
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
-              providers: [
-                BlocProvider(
-                    create: (_) => getIt<SearchCubit>(),
-                  child: SearchScreen(),
-                ),
-              ],
-              child: BottomNavBar()
-          )
-        );
-
-
-      case Routes.homeScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<HomeCubit>()..getAllAreas(),
-            // ..getAllFood(),
-            child: HomeScreen(),
+            providers: [
+              BlocProvider(
+                create: (_) => getIt<HomeCubit>()..getAllFood('Indian'),
+                child: HomeScreen(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<SearchCubit>(),
+                child: SearchScreen(),
+              ),
+            ],
+            child: BottomNavBar(),
           ),
         );
+
       case Routes.detailsScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              BlocProvider(
-                create: (context) => getIt<DetailsCubit>()..getAllMealDetails("52787"),
-                child: DetailsScreen(),
-              ),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                getIt<DetailsCubit>()..getAllMealDetails("52787"),
+            child: DetailsScreen(),
+          ),
         );
 
-   
       case Routes.registerScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
