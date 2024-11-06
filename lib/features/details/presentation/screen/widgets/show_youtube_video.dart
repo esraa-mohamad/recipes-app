@@ -7,7 +7,7 @@ import '../../../../../core/theme/app_color.dart';
 class ShowYoutubeVideo extends StatefulWidget {
   const ShowYoutubeVideo({super.key, required this.mealsDetails});
 
-  final MealsDetails mealsDetails;
+  final MealsDetails? mealsDetails;
   @override
   State<ShowYoutubeVideo> createState() => _ShowYoutubeVideoState();
 }
@@ -17,7 +17,7 @@ class _ShowYoutubeVideoState extends State<ShowYoutubeVideo> {
   @override
   void initState() {
     super.initState();
-    String videoId = _extractVideoId(widget.mealsDetails.youtubeLink ?? '');
+    String videoId = _extractVideoId(widget.mealsDetails!.youtubeLink ?? '');
     _controller = YoutubePlayerController(
       initialVideoId: videoId,
       flags: YoutubePlayerFlags(

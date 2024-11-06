@@ -13,12 +13,7 @@ class DetailsRepo{
   Future<Either<ApiErrorModel , MealsModelResponse>> getMealDetails(String id) async{
     try {
       var mealsData = await _apiServices.getMealsDetails(id);
-      if (mealsData.mealsDetails == null || mealsData.mealsDetails!.isEmpty) {
-        return Left(ApiErrorHandler.handle("No meals data for this id"));
-      }else {
         return Right(mealsData);
-
-      }
     }  catch (error) {
       return Left(ApiErrorHandler.handle(error.toString()));
     }
