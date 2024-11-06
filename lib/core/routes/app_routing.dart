@@ -19,7 +19,7 @@ import '../../features/login/presentation/screen/ui/login_screen.dart';
 
 class AppRouting {
   Route? generateRoute(RouteSettings routesSettings) {
-    //final arguments = routesSettings.arguments;
+    final arguments = routesSettings.arguments;
     switch (routesSettings.name) {
       case Routes.splashScreen:
         return MaterialPageRoute(
@@ -66,7 +66,9 @@ class AppRouting {
         return MaterialPageRoute(
           builder: (_) =>
               BlocProvider(
-                create: (context) => getIt<DetailsCubit>()..getAllMealDetails("52787"),
+                key: ValueKey(arguments), // Key that changes with each ID
+                create: (context) => getIt<DetailsCubit>()
+                  ..getAllMealDetails(arguments as String),
                 child: DetailsScreen(),
               ),
         );

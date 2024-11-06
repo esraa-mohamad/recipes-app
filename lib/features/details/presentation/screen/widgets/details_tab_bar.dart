@@ -15,16 +15,21 @@ class DetailsTabBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle ,
-              color: Colors.white
-            ),
-            child: Icon(
-              Icons.arrow_back ,
-              color: Colors.black,
-              size: 24,
+          GestureDetector(
+            onTap: (){
+              Navigator.of(context).pop();
+            },
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle ,
+                color: Colors.white
+              ),
+              child: Icon(
+                Icons.arrow_back ,
+                color: Colors.black,
+                size: 24,
+              ),
             ),
           ),
           Container(

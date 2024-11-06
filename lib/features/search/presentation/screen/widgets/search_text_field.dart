@@ -12,7 +12,7 @@ class SearchTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     var searchCubit = SearchCubit.get(context);
     return  CustomTextFormField(
-      controller: searchCubit.nameController,
+      //controller: searchCubit.nameController,
       hintText: 'Searching recipes...',
       validator: (value) {},
       suffixIcon: Icon(
@@ -21,7 +21,7 @@ class SearchTextField extends StatelessWidget {
         size: 20.sp,
       ),
       onChanged: (value){
-        searchCubit.searchUsingName();
+        searchCubit.searchUsingName(value);
       },
     );
   }
