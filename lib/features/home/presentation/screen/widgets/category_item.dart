@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/home_state.dart';
 
-class CategoryContainer extends StatefulWidget {
-  const CategoryContainer({super.key});
+class CategoryItem extends StatefulWidget {
+  const CategoryItem({super.key});
 
   @override
-  CategoryContainerState createState() => CategoryContainerState();
+  CategoryItemState createState() => CategoryItemState();
 }
 
-class CategoryContainerState extends State<CategoryContainer> {
+class CategoryItemState extends State<CategoryItem> {
   String selectedItem = '';
 
   @override
@@ -29,6 +30,8 @@ class CategoryContainerState extends State<CategoryContainer> {
             children: categories.map((category) {
               return GestureDetector(
                 onTap: () {
+                  Navigator.pushNamed(context, Routes.mealsScreen,
+                      arguments: category.name);
                   setState(() {
                     selectedItem =
                         category.name == selectedItem ? '' : category.name;

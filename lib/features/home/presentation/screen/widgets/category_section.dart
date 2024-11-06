@@ -20,9 +20,9 @@ class CategorySection extends StatelessWidget {
         SizedBox(
           height: 15,
         ),
-        // CategoryContainer(),
+        CategoryItem(),
         // CategoryTabbar(),
-        FoodContainer(),
+        // FoodContainer(),
       ],
     );
   }

@@ -6,6 +6,8 @@ import 'package:recipes_book_app/features/home/data/repo/home_repo.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.dart';
 import 'package:recipes_book_app/features/details/data/repo/details_repo.dart';
 import 'package:recipes_book_app/features/details/presentation/manager/details_cubit.dart';
+import 'package:recipes_book_app/features/meals_screen/data/repo/meal_repo.dart';
+import 'package:recipes_book_app/features/meals_screen/presentation/manager/meals_cubit.dart';
 import 'package:recipes_book_app/features/search/data/repo/search_repo.dart';
 import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
 
@@ -24,4 +26,7 @@ void setup() {
   // details
   getIt.registerLazySingleton<DetailsRepo>(() => DetailsRepo(getIt()));
   getIt.registerLazySingleton<DetailsCubit>(() => DetailsCubit(getIt()));
+
+  getIt.registerLazySingleton<MealRepo>(() => MealRepo(getIt()));
+  getIt.registerFactory<MealCubit>(() => MealCubit(getIt()));
 }

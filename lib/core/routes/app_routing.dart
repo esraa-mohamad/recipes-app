@@ -7,6 +7,8 @@ import 'package:recipes_book_app/features/details/presentation/manager/details_c
 import 'package:recipes_book_app/features/details/presentation/screen/ui/details_screen.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
+import 'package:recipes_book_app/features/meals_screen/presentation/manager/meals_cubit.dart';
+import 'package:recipes_book_app/features/meals_screen/presentation/screen/ui/meals_screen.dart';
 import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
 import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
@@ -19,11 +21,20 @@ import '../../features/login/presentation/screen/ui/login_screen.dart';
 
 class AppRouting {
   Route? generateRoute(RouteSettings routesSettings) {
-    //final arguments = routesSettings.arguments;
+    final arguments = routesSettings.arguments;
     switch (routesSettings.name) {
       case Routes.splashScreen:
         return MaterialPageRoute(
           builder: (_) => SplashScreen(),
+        );
+      case Routes.mealsScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            key: ValueKey(arguments),
+            create: (context) =>
+                getIt<MealCubit>()..getAllMeals(arguments as String),
+            child: MealsScreen(),
+          ),
         );
       case Routes.onBoardingScreen:
         return PageRouteBuilder(
@@ -51,7 +62,7 @@ class AppRouting {
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (_) => getIt<HomeCubit>()..getAllFood('Indian'),
+                create: (_) => getIt<HomeCubit>()..getAllCategories(),
                 child: HomeScreen(),
               ),
               BlocProvider(
@@ -95,5 +106,5 @@ class AppRouting {
           ),
         );
     }
-  }
+   }
 }
