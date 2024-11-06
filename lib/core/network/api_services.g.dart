@@ -24,7 +24,7 @@ class _ApiServices implements ApiServices {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<SearchModelResponse> searchUsingNAME(String name) async {
+  Future<SearchModelResponse> searchUsingName(String name) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r's': name};
     final _headers = <String, dynamic>{};

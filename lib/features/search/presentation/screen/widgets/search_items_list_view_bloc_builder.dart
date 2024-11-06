@@ -20,7 +20,7 @@ class SearchItemsListViewBlocBuilder extends StatelessWidget {
       }else if(state is SearchFailed){
         return CustomMessage(error:"No meals for this name");
       }else {
-        return CustomMessage(error:"Find your meals" ,backgroundColor: AppColor.mainOrange,);
+        return CustomMessage(error:"Start typing to find your meals..." ,backgroundColor: AppColor.mainOrange,);
       }
     }
     );

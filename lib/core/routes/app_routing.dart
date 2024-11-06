@@ -47,7 +47,15 @@ class AppRouting {
         );
       case Routes.bottomBar:
         return MaterialPageRoute(
-          builder: (_) => BottomNavBar(),
+          builder: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                    create: (_) => getIt<SearchCubit>(),
+                  child: SearchScreen(),
+                )
+              ],
+              child: BottomNavBar()
+          )
         );
 
       case Routes.homeScreen:
@@ -67,7 +75,7 @@ class AppRouting {
         return MaterialPageRoute(
           builder: (_) =>
               BlocProvider(
-                create: (context) => getIt<SearchCubit>(),
+                create: (_) => getIt<SearchCubit>(),
                 child: SearchScreen(),
               ),
         );
