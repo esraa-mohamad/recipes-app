@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_book_app/features/details/presentation/screen/widgets/details_tab_bar.dart';
-import 'package:recipes_book_app/features/details/presentation/screen/widgets/meal_details.dart';
-import 'package:recipes_book_app/features/details/presentation/screen/widgets/show_youtube_video.dart';
+import 'package:recipes_book_app/features/details/presentation/screen/widgets/meals_details_data_bloc_builder.dart';
 
 
 class DetailsBody extends StatelessWidget {
@@ -15,11 +14,7 @@ class DetailsBody extends StatelessWidget {
         child: Column(
           children: [
             DetailsTabBar(),
-            ShowYoutubeVideo(),
-            SizedBox(
-              height: 24,
-            ),
-            MealDetails(),
+            MealsDetailsDataBlocBuilder(),
           ],
         ),
       ),
