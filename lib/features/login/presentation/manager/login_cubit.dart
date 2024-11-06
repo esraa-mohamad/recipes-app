@@ -41,4 +41,16 @@ class LoginCubit extends Cubit<LoginState> {
   void logOut(){
     _auth.signOut();
   }
+
+  // Dispose controllers
+  void disposeControllers() {
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  @override
+  Future<void> close() {
+    disposeControllers();
+    return super.close();
+  }
 }

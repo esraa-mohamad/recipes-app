@@ -4,14 +4,10 @@ import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/core/widgets/custom_text_form_field.dart';
 import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
 
-class RegisterForm extends StatefulWidget {
+
+class RegisterForm extends StatelessWidget{
   const RegisterForm({super.key});
 
-  @override
-  State<RegisterForm> createState() => _RegisterFormState();
-}
-
-class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     var registerCubit = RegisterCubit.get(context);
@@ -118,14 +114,5 @@ class _RegisterFormState extends State<RegisterForm> {
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    RegisterCubit.get(context).nameController.dispose();
-    RegisterCubit.get(context).emailController.dispose();
-    RegisterCubit.get(context).passwordController.dispose();
-    RegisterCubit.get(context).confirmPasswordController.dispose();
-    super.dispose();
   }
 }

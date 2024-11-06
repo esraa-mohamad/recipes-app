@@ -6,14 +6,10 @@ import 'package:recipes_book_app/features/login/presentation/manager/login_cubit
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
-class LoginForm extends StatefulWidget {
+
+class LoginForm extends StatelessWidget{
   const LoginForm({super.key});
 
-  @override
-  State<LoginForm> createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     var loginCubit = LoginCubit.get(context);
@@ -70,10 +66,4 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  @override
-  void dispose() {
-    LoginCubit.get(context).emailController.dispose();
-    LoginCubit.get(context).passwordController.dispose();
-    super.dispose();
-  }
 }
