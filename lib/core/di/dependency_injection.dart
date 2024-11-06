@@ -23,5 +23,5 @@ void setup() {
 
   // details
   getIt.registerLazySingleton<DetailsRepo>(() => DetailsRepo(getIt()));
-  getIt.registerLazySingleton<DetailsCubit>(() => DetailsCubit(getIt()));
+  getIt.registerFactory<DetailsCubit>(() => DetailsCubit(getIt()));
 }

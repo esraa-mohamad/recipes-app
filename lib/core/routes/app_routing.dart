@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_book_app/core/di/dependency_injection.dart';
@@ -66,22 +67,20 @@ class AppRouting {
       case Routes.detailsScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-             key: ValueKey(arguments), 
+            key: ValueKey(arguments),
             create: (context) =>
-getIt<DetailsCubit>()
-                  ..getAllMealDetails(arguments as String),
+                getIt<DetailsCubit>()..getAllMealDetails(arguments as String),
             child: DetailsScreen(),
           ),
         );
-         case Routes.searchScreen:
+      case Routes.searchScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              BlocProvider(
-                create: (_) => getIt<SearchCubit>(),
-                child: SearchScreen(),
-              ),
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<SearchCubit>(),
+            child: SearchScreen(),
+          ),
         );
- case Routes.homeScreen:
+      case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => HomeScreen(),
         );
