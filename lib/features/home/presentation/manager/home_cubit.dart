@@ -29,5 +29,17 @@ class HomeCubit extends Cubit<HomeState> {
     }, (area) {
       emit(HomeAreaSuccessState(areaModel: area));
     });
+  }  
+
+   void getAllFood(String area) async {
+    emit(HomeAreaLoadingState());
+
+    var areas = await homeRepo.getAllFood(area);
+
+    areas.fold((error) {
+      emit(HomeFoodFailureState(apiErrorModel: error));
+    }, (food) {
+      emit(HomeFoodSuccessState(foodModel: food));
+    });
   }
 }

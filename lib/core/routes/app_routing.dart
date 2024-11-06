@@ -52,7 +52,8 @@ class AppRouting {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => getIt<HomeCubit>(),
+            create: (context) => getIt<HomeCubit>()..getAllAreas(),
+            // ..getAllFood(),
             child: HomeScreen(),
           ),
         );

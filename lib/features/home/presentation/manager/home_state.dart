@@ -1,6 +1,7 @@
 import 'package:recipes_book_app/core/network/api_error_model.dart';
 import 'package:recipes_book_app/features/home/data/models/area_model.dart';
 import 'package:recipes_book_app/features/home/data/models/category_model.dart';
+import 'package:recipes_book_app/features/home/data/models/food_model.dart';
 
 abstract class HomeState {}
 
@@ -33,4 +34,18 @@ class HomeAreaFailureState extends HomeState {
   final ApiErrorModel apiErrorModel;
 
   HomeAreaFailureState({required this.apiErrorModel});
+}
+
+class HomeFoodLoadingState extends HomeState {}
+
+class HomeFoodSuccessState extends HomeState {
+  final FoodModel foodModel;
+
+  HomeFoodSuccessState({required this.foodModel});
+}
+
+class HomeFoodFailureState extends HomeState {
+  final ApiErrorModel apiErrorModel;
+
+  HomeFoodFailureState({required this.apiErrorModel});
 }

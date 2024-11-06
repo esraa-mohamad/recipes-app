@@ -30,7 +30,6 @@ class CategoryTabbarState extends State<CategoryTabbar> {
             return const Center(child: Text('No categories available.'));
           }
 
-          // Delay the building of TabController until the areas are loaded
           return SafeArea(
             child: DefaultTabController(
               length: areas.length,
@@ -39,33 +38,27 @@ class CategoryTabbarState extends State<CategoryTabbar> {
                 child: Column(
                   children: <Widget>[
                     TabBar(
-                      dividerHeight: 0,
+                      tabAlignment: TabAlignment.start,
+                      dividerHeight: 0.h,
                       isScrollable: true,
                       labelColor: Colors.black,
                       labelStyle: AppTextStyle.font16DarkGreenSemiBold,
-                      unselectedLabelStyle: AppTextStyle.font16SlateGrayRegular,
+                      unselectedLabelStyle: AppTextStyle.font14SlateGrayRegular,
                       unselectedLabelColor: AppColor.slateGray,
                       indicator: UnderlineTabIndicator(
                         borderSide: BorderSide(
                           color: AppColor.mainOrange,
-                          width: 2.w,
+                          width: 1.w,
                         ),
                       ),
-                      tabs: areas.map((area) => Tab(text: area.areaName)).toList(),
+                      tabs: areas
+                          .map((area) => Tab(text: area.areaName))
+                          .toList(),
                     ),
                     Expanded(
                       child: TabBarView(
                         children: areas.map((area) {
-                          return ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 5,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: FoodContainer(),
-                              );
-                            },
-                          );
+                          return FoodContainer();
                         }).toList(),
                       ),
                     ),

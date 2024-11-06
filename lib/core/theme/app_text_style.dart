@@ -85,4 +85,6 @@ class AppTextStyle {
 
   );
 
+  static var font16SlateGrayLight;
+
 }
