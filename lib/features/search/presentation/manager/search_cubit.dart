@@ -12,8 +12,13 @@ class SearchCubit extends Cubit<SearchState> {
   final SearchRepo searchRepo;
 
   void searchUsingName() async {
+    if (nameController.text.isEmpty) {
+      // Emit an initial state or a state indicating empty results
+      emit(SearchInitial());
+      return;
+    }
     emit(SearchLoading());
-    var searchData = await searchRepo.searchUsingName(name: nameController.text);
+    var searchData = await searchRepo.searchUsingName(name:nameController.text);
     searchData.fold(
       (error) {
         emit(SearchFailed(error.toString()));
@@ -23,4 +28,17 @@ class SearchCubit extends Cubit<SearchState> {
       },
     );
   }
+
+// Dispose controllers
+  void disposeControllers() {
+    nameController.dispose();
+  }
+
+  @override
+  Future<void> close() {
+    disposeControllers();
+    return super.close();
+  }
 }
+
+

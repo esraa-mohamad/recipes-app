@@ -12,7 +12,7 @@ class SearchRepo{
 
   Future<Either<ApiErrorModel , SearchModelResponse>> searchUsingName({ required String name}) async{
     try {
-      var searchData = await _apiServices.searchUsingNAME(name);
+      var searchData = await _apiServices.searchUsingName(name);
       if(searchData.mealsData == null){
         return Left(ApiErrorHandler.handle("No Data available for this name"));
       }else{

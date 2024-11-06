@@ -10,7 +10,7 @@ abstract class ApiServices {
   factory ApiServices(Dio dio, {String? baseUrl}) = _ApiServices;
 
   @GET(ApiConstants.searchUsingName)
-  Future<SearchModelResponse> searchUsingNAME(
+  Future<SearchModelResponse> searchUsingName(
     @Query("s") String name,
   );
 }

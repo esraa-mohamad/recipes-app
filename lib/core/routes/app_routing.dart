@@ -9,7 +9,6 @@ import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_
 import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
 import '../di/dependency_injection.dart';
 import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
-import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
 import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/screen/ui/register_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/screen/ui/search_screen.dart';
@@ -45,14 +44,17 @@ class AppRouting {
             );
           },
         );
-              ).animate(curvedAnimation),
-              child: child,
-            );
-          },
-        );
       case Routes.bottomBar:
         return MaterialPageRoute(
-          builder: (_) => BottomNavBar(),
+          builder: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                    create: (_) => getIt<SearchCubit>(),
+                  child: SearchScreen(),
+                )
+              ],
+              child: BottomNavBar()
+          )
         );
 
       case Routes.homeScreen:
@@ -68,7 +70,7 @@ class AppRouting {
         return MaterialPageRoute(
           builder: (_) =>
               BlocProvider(
-                create: (context) => getIt<SearchCubit>(),
+                create: (_) => getIt<SearchCubit>(),
                 child: SearchScreen(),
               ),
         );
