@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_book_app/core/di/dependency_injection.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
+import 'package:recipes_book_app/features/details/presentation/manager/details_cubit.dart';
 import 'package:recipes_book_app/features/details/presentation/screen/ui/details_screen.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/home_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
-import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
 import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
+import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
+ import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/screen/ui/register_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/screen/ui/search_screen.dart';
@@ -39,15 +41,23 @@ class AppRouting {
               position: Tween<Offset>(
                 begin: const Offset(1.0, 0.0), // Start from right side
                 end: Offset.zero, // Slide to the center
-              ).animate(curvedAnimation),
-              child: child,
+              ).animate(curvedAnimation), child: child,
             );
           },
         );
       case Routes.bottomBar:
         return MaterialPageRoute(
-          builder: (_) => BottomNavBar(),
+          builder: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                    create: (_) => getIt<SearchCubit>(),
+                  child: SearchScreen(),
+                ),
+              ],
+              child: BottomNavBar()
+          )
         );
+
 
       case Routes.homeScreen:
         return MaterialPageRoute(
@@ -59,13 +69,14 @@ class AppRouting {
         );
       case Routes.detailsScreen:
         return MaterialPageRoute(
-          builder: (_) => DetailsScreen(),
+          builder: (_) =>
+              BlocProvider(
+                create: (context) => getIt<DetailsCubit>()..getAllMealDetails("52787"),
+                child: DetailsScreen(),
+              ),
         );
 
-      case Routes.searchScreen:
-        return MaterialPageRoute(
-          builder: (_) => SearchScreen(),
-        );
+   
       case Routes.registerScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
