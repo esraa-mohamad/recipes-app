@@ -15,7 +15,7 @@ class RecipesBookApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRouting.generateRoute,
-        initialRoute: Routes.bottomBar,
+        initialRoute: Routes.splashScreen,
       ),
     );
   }
