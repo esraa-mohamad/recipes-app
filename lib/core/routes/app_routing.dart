@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/widgets/bottom_bar.dart';
+import 'package:recipes_book_app/features/details/presentation/manager/details_cubit.dart';
 
 import 'package:recipes_book_app/features/details/presentation/screen/ui/details_screen.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
@@ -9,7 +10,6 @@ import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_
 import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
 import '../di/dependency_injection.dart';
 import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
-import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
 import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/screen/ui/register_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/screen/ui/search_screen.dart';
@@ -45,11 +45,6 @@ class AppRouting {
             );
           },
         );
-              ).animate(curvedAnimation),
-              child: child,
-            );
-          },
-        );
       case Routes.bottomBar:
         return MaterialPageRoute(
           builder: (_) => BottomNavBar(),
@@ -61,7 +56,11 @@ class AppRouting {
         );
       case Routes.detailsScreen:
         return MaterialPageRoute(
-          builder: (_) => DetailsScreen(),
+          builder: (_) =>
+              BlocProvider(
+                create: (context) => getIt<DetailsCubit>()..getAllMealDetails("52787"),
+                child: DetailsScreen(),
+              ),
         );
 
       case Routes.searchScreen:
