@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
-import 'package:recipes_book_app/features/home/presentation/screen/widgets/categories_tabbar.dart';
+import 'package:recipes_book_app/features/home/presentation/screen/widgets/categories_tab_bar.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/widgets/category_item.dart';
 
 class CategorySection extends StatelessWidget {
@@ -20,7 +20,7 @@ class CategorySection extends StatelessWidget {
           height: 15,
         ),
         CategoryItem(),
-        CategoryTabbar(),
+        CategoryTabBar(),
       ],
     );
   }

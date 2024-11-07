@@ -16,11 +16,13 @@ class CustomImageNetwork extends StatelessWidget {
       imagePath ?? AppImages.mealImageFake,
       width: width ?? 67.w,
       height: height ?? 70.h,
+      fit: BoxFit.cover,
       errorBuilder: (context, error, stackTrace) {
         return Image.network(
           AppImages.mealImageFake,
           width: width ?? 67.w,
           height: height ?? 70.h,
+          fit: BoxFit.cover,
         );
       },
     );
