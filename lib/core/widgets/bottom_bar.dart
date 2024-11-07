@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
+import 'package:recipes_book_app/features/search/presentation/screen/ui/search_screen.dart';
+import 'package:recipes_book_app/features/saved_screen/presentation/screen/ui/saved_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -16,16 +18,8 @@ class BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> screens = [
     HomeScreen(),
-    Center(
-      child: Text(
-        'Search Screen',
-      ),
-    ),
-    Center(
-      child: Text(
-        'Profile Screen',
-      ),
-    ),
+    SearchScreen(),
+    SavedScreen(),
   ];
 
   @override
@@ -34,9 +28,21 @@ class BottomNavBarState extends State<BottomNavBar> {
       bottomNavigationBar: CurvedNavigationBar(
         key: bottomNavigationKey,
         items: <Widget>[
-          Icon(Icons.home, size: 30),
-          Icon(Icons.search, size: 30),
-          Icon(Icons.person, size: 30),
+          Icon(
+            Icons.home,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.search,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.bookmark,
+            size: 30,
+            color: Colors.white,
+          ),
         ],
         color: AppColor.mainOrange,
         buttonBackgroundColor: AppColor.mainOrange,
