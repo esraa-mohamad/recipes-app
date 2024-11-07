@@ -11,7 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  setup();
+  await setup();
   runApp(
     RecipesBookApp(
       appRouting: AppRouting(),

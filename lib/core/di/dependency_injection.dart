@@ -19,7 +19,7 @@ import '../shared_pref/app_prefs.dart';
 
 final getIt = GetIt.instance;
 
-void setup() async {
+Future<void> setup() async {
   // apps prefs instance
   final sharedPrefs = await SharedPreferences.getInstance();
   getIt.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
