@@ -8,24 +8,25 @@ import 'package:recipes_book_app/features/home/presentation/manager/area_cubit/a
 import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/widgets/food_container.dart';
 
-class CategoryTabbar extends StatefulWidget {
-  const CategoryTabbar({super.key});
+class CategoryTabBar extends StatefulWidget {
+  const CategoryTabBar({super.key});
 
   @override
-  CategoryTabbarState createState() => CategoryTabbarState();
+  CategoryTabBarState createState() => CategoryTabBarState();
 }
 
-class CategoryTabbarState extends State<CategoryTabbar> {
+class CategoryTabBarState extends State<CategoryTabBar> {
+  late AreaCubit areaCubit;
   @override
   void initState() {
     super.initState();
     // Get the food items for the first area by default when the widget is created
-    final areaCubit = BlocProvider.of<AreaCubit>(context);
+     areaCubit = AreaCubit.get(context);
     areaCubit.stream.listen((state) {
       if (state is AreaSuccessState && state.areaModel.areaData.isNotEmpty) {
         // Fetch foods for the first area
-        FoodCubit.get(context)
-            .getAllFoods(state.areaModel.areaData[0].areaName);
+        // ignore: use_build_context_synchronously
+        FoodCubit.get(context).getAllFoods(state.areaModel.areaData[0].areaName);
       }
     });
   }

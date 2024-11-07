@@ -10,6 +10,7 @@ import 'package:recipes_book_app/features/details/presentation/manager/details_c
 import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_cubit.dart';
 import 'package:recipes_book_app/features/meals_screen/data/repo/meal_repo.dart';
 import 'package:recipes_book_app/features/meals_screen/presentation/manager/meals_cubit.dart';
+import 'package:recipes_book_app/features/saved_screen/presentation/manager/saved_cubit.dart';
 import 'package:recipes_book_app/features/search/data/repo/search_repo.dart';
 import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,7 +36,10 @@ void setup() async {
 
  // food
   getIt.registerLazySingleton<FoodCubit>(() => FoodCubit(getIt()));
-  
+
+  // saved
+  getIt.registerLazySingleton<SavedCubit>(() => SavedCubit());
+
 
   // search
   getIt.registerLazySingleton<SearchRepo>(() => SearchRepo(getIt()));

@@ -2,10 +2,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
-import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_state.dart';
+import 'package:recipes_book_app/features/home/presentation/screen/widgets/icon_change_bloc_consumer.dart';
 
 class FoodContainer extends StatelessWidget {
   const FoodContainer({super.key});
@@ -76,11 +76,7 @@ class FoodContainer extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Icon(
-                                    Icons.bookmark,
-                                    size: 20,
-                                    color: AppColor.mainOrange,
-                                  ),
+                                  IconChangeBlocConsumer(foodData: food[index])
                                 ],
                               ),
                             ],
