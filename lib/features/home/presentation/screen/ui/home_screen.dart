@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               HeaderSection(),
               SizedBox(
-                height: 30.h.h,
+                height: 30.h,
               ),
               CategorySection(),
             ],

@@ -48,18 +48,18 @@ class RegisterBody extends StatelessWidget {
                     style: AppTextStyle.font30DarkGreenBold,
                   ),
                   SizedBox(
-                    height: 12.h.h,
+                    height: 12.h,
                   ),
                   SizedBox(
-                    height: 50.h.h,
+                    height: 50.h,
                   ),
                   RegisterForm(),
                   SizedBox(
-                    height: 50.h.h,
+                    height: 50.h,
                   ),
                   RegisterButton(),
                   SizedBox(
-                    height: 50.h.h,
+                    height: 50.h,
                   ),
                   Center(
                     child: RichText(

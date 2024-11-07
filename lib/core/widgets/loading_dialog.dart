@@ -14,8 +14,8 @@ void loadingDialog(BuildContext context) {
             elevation: 1.5,
             backgroundColor: Colors.white,
             child: Container(
-              width: 400.w.w,
-              height: 300.h.h,
+              width: 400.w,
+              height: 300.h,
               decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.rectangle,

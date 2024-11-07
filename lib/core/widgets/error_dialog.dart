@@ -16,8 +16,8 @@ void errorDialog(BuildContext context, String error) {
       elevation: 1.5,
       backgroundColor: Colors.white,
       child: Container(
-        width: 450.w.w,
-        height: 400.h.h,
+        width: 450.w,
+        height: 400.h,
         decoration: BoxDecoration(
             color: Colors.white,
             shape: BoxShape.rectangle,
@@ -30,9 +30,9 @@ void errorDialog(BuildContext context, String error) {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Lottie.asset(AppLottie.error, width: 200.w.w, height: 150.h.h),
+            Lottie.asset(AppLottie.error, width: 200.w, height: 150.h),
             SizedBox(
-              height: 15.h.h,
+              height: 15.h,
             ),
             Text(error,
                 maxLines: 3,
@@ -40,7 +40,7 @@ void errorDialog(BuildContext context, String error) {
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyle.font15OrangeSemiBold),
             SizedBox(
-              height: 15.h.h,
+              height: 15.h,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.w),

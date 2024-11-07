@@ -36,7 +36,7 @@ class SearchItem extends StatelessWidget {
                 ),
                 child: CustomImageNetwork(imagePath: mealsData!.mealImage)),
             SizedBox(
-              width: 16.w.w,
+              width: 16.w,
             ),
             Expanded(
               child: Text(

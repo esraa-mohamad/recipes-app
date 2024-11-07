@@ -53,18 +53,18 @@ class LoginBody extends StatelessWidget {
                     style: AppTextStyle.font30DarkGreenBold,
                   ),
                   SizedBox(
-                    height: 12.h.h,
+                    height: 12.h,
                   ),
                   SizedBox(
-                    height: 100.h.h,
+                    height: 100.h,
                   ),
                   LoginForm(),
                   SizedBox(
-                    height: 80.h.h,
+                    height: 80.h,
                   ),
                   LoginButton(),
                   SizedBox(
-                    height: 80.h.h,
+                    height: 80.h,
                   ),
                   Center(
                     child: RichText(

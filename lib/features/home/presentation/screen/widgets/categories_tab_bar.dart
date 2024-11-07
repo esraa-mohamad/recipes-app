@@ -47,10 +47,11 @@ class CategoryTabBarState extends State<CategoryTabBar> {
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding:   EdgeInsets.only(top: 5),
-                      child: TabBar(dividerHeight: 0.h,
+                      padding: EdgeInsets.only(top: 5),
+                      child: TabBar(
+                        dividerHeight: 0.h,
                         tabAlignment: TabAlignment.start,
-                         isScrollable: true,
+                        isScrollable: true,
                         labelColor: Colors.black,
                         labelStyle: AppTextStyle.font16DarkGreenSemiBold,
                         unselectedLabelStyle:
@@ -59,14 +60,14 @@ class CategoryTabBarState extends State<CategoryTabBar> {
                         indicator: UnderlineTabIndicator(
                           borderSide: BorderSide(
                             color: AppColor.mainOrange,
-                            width: 1.w.w,
+                            width: 1.w,
                           ),
                         ),
                         tabs: List.generate(
                           4,
                           (index) => Container(
-                            width: 100.w.w,
-                            height: 30.h.h,
+                            width: 100.w,
+                            height: 30.h,
                             margin: EdgeInsets.symmetric(horizontal: 8.w),
                             decoration: BoxDecoration(
                               color: Colors.grey[300],
@@ -108,7 +109,7 @@ class CategoryTabBarState extends State<CategoryTabBar> {
                       indicator: UnderlineTabIndicator(
                         borderSide: BorderSide(
                           color: AppColor.mainOrange,
-                          width: 1.w.w,
+                          width: 1.w,
                         ),
                       ),
                       tabs: areas
