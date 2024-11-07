@@ -12,6 +12,7 @@ class DetailsBody extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DetailsTabBar(),
             MealsDetailsDataBlocBuilder(),

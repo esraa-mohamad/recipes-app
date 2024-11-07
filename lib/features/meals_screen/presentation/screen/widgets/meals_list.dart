@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipes_book_app/core/widgets/custom_image_network.dart';
 import 'package:recipes_book_app/core/widgets/shimmer_widget.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
@@ -18,10 +19,11 @@ class MealsSliverList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
+        mainAxisExtent: 200,
       ),
       delegate: SliverChildBuilderDelegate(
         childCount: isLoading ? 8 : meals?.mealData.length ?? 0,
@@ -29,7 +31,7 @@ class MealsSliverList extends StatelessWidget {
           if (isLoading) {
             return ShimmerWidget(
               widget: Container(
-                height: 120.h,
+                height: 200.h,
                 color: Colors.grey[300],
               ),
             );
@@ -47,23 +49,27 @@ class MealsSliverList extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
-                      meals!.mealData[index].img,
-                      height: 120.h,
-                      fit: BoxFit.fitWidth,
+                    CustomImageNetwork(
+                        imagePath: meals!.mealData[index].img,
+                      height: 150.h,
                       width: double.infinity,
+                      fit: BoxFit.fitWidth,
                     ),
                     SizedBox(height: 10.h),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Text(
-                        meals!.mealData[index].name,
-                        maxLines: 2,
-                        style: AppTextStyle.font14WhiteSemiBold.copyWith(
-                          color: Colors.black,
-                          fontSize: 17.w,
-                          fontWeight: FontWeight.normal,
-                          overflow: TextOverflow.ellipsis,
+                    Expanded(
+                      child: Padding(
+                        padding:  EdgeInsets.symmetric(horizontal: 8.w),
+                        child: Center(
+                          child: Text(
+                            meals!.mealData[index].name,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            style: AppTextStyle.font14WhiteSemiBold.copyWith(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
                         ),
                       ),
                     ),

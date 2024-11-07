@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +27,6 @@ class LoginBody extends StatelessWidget {
         } else if (state is LoginSuccess) {
           Navigator.of(context).pop();
           final displayName = state.user!.displayName ?? 'Guest';
-          log("Name : $displayName");
           appPreferences.setLoginName(displayName);
           Navigator.of(context).pushReplacementNamed(Routes.bottomBar);
         } else if (state is LoginFailed) {

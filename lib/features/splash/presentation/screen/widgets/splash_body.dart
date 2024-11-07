@@ -70,8 +70,8 @@ class _SplashBodyState extends State<SplashBody>
       child: Center(
           child: Image.asset(
         AppImages.splashLogo,
-        width: 85.w.h,
-        height: 85.h.h,
+        width: 100.w,
+        height: 100.h,
       )),
     );
   }

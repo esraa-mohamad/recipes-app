@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/shared_pref/app_prefs.dart';
+import '../../../../saved_screen/presentation/manager/saved_cubit.dart';
 import 'logout_state.dart';
 
 class LogoutCubit extends Cubit<LogoutState> {
@@ -18,6 +19,12 @@ class LogoutCubit extends Cubit<LogoutState> {
      await _auth.signOut();
         emit(LogoutSuccess());
         appPreferences.clearUserData();
+     getIt.unregister<SavedCubit>();
+     getIt.registerLazySingleton<SavedCubit>(() => SavedCubit());
+
+     // Unregister and re-register the cubit to reset it
+     getIt.unregister<LogoutCubit>();
+     getIt.registerLazySingleton<LogoutCubit>(() => LogoutCubit());
     } catch (error) {
       emit(LogoutFailed(error.toString()));
     }

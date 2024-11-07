@@ -47,6 +47,8 @@ class HeaderSection extends StatelessWidget {
           ),
           trailing: GestureDetector(
             onTap: (){
+              // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
+              logoutCubit.emit(LogoutInitial()); // Reset to initial state before logout
               logoutCubit.logout();
             },
             child: Icon(

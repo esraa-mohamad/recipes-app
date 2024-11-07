@@ -11,6 +11,12 @@ class IconChangeBlocConsumer extends StatelessWidget {
 final FoodData foodData;
   @override
   Widget build(BuildContext context) {
+    final savedCubit = SavedCubit.get(context);
+
+    if (savedCubit.isClosed) {
+      // Return a default icon or reset the state
+      return Icon(Icons.bookmark_border, size: 20, color: AppColor.slateGray);
+    }
     return BlocConsumer<SavedCubit , SavedState>(
         builder: (context , state){
           var savedCubit = SavedCubit.get(context);

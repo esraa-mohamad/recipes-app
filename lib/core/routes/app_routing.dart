@@ -14,7 +14,6 @@ import 'package:recipes_book_app/features/meals_screen/presentation/manager/meal
 import 'package:recipes_book_app/features/meals_screen/presentation/screen/ui/meals_screen.dart';
 import 'package:recipes_book_app/features/on_boarding/presentation/screen/ui/on_boarding_screen.dart';
 import 'package:recipes_book_app/features/saved_screen/presentation/manager/saved_cubit.dart';
-import 'package:recipes_book_app/features/saved_screen/presentation/screen/ui/saved_screen.dart';
 import 'package:recipes_book_app/features/search/presentation/manager/search_cubit.dart';
 import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
 import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
@@ -80,11 +79,9 @@ class AppRouting {
               ),
               BlocProvider(
                 create: (_) => getIt<SearchCubit>(),
-                child: SearchScreen(),
               ),
               BlocProvider(
                 create: (_) => getIt<SavedCubit>(),
-                child: SavedScreen(),
               ),
             ],
             child: BottomNavBar(),
