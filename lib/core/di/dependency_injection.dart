@@ -8,6 +8,7 @@ import 'package:recipes_book_app/features/home/presentation/manager/area_cubit/a
 import 'package:recipes_book_app/features/details/data/repo/details_repo.dart';
 import 'package:recipes_book_app/features/details/presentation/manager/details_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_cubit.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/logout_cubit/logout_cubit.dart';
 import 'package:recipes_book_app/features/meals_screen/data/repo/meal_repo.dart';
 import 'package:recipes_book_app/features/meals_screen/presentation/manager/meals_cubit.dart';
 import 'package:recipes_book_app/features/saved_screen/presentation/manager/saved_cubit.dart';
@@ -39,6 +40,9 @@ Future<void> setup() async {
 
   // saved
   getIt.registerLazySingleton<SavedCubit>(() => SavedCubit());
+
+  // logout
+  getIt.registerLazySingleton<LogoutCubit>(() => LogoutCubit());
 
 
   // search

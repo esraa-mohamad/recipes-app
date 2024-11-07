@@ -8,6 +8,7 @@ import 'package:recipes_book_app/features/details/presentation/screen/ui/details
 import 'package:recipes_book_app/features/home/presentation/manager/category_cubit/category_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/area_cubit/area_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_cubit.dart';
+import 'package:recipes_book_app/features/home/presentation/manager/logout_cubit/logout_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/ui/home_screen.dart';
 import 'package:recipes_book_app/features/meals_screen/presentation/manager/meals_cubit.dart';
 import 'package:recipes_book_app/features/meals_screen/presentation/screen/ui/meals_screen.dart';
@@ -66,6 +67,9 @@ class AppRouting {
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
+                  create: (_) => getIt<LogoutCubit>(),
+              ),
+              BlocProvider(
                 create: (_) => getIt<CategoryCubit>()..getAllCategories(),
               ),
               BlocProvider(
@@ -79,7 +83,7 @@ class AppRouting {
                 child: SearchScreen(),
               ),
               BlocProvider(
-                  create: (_) => getIt<SavedCubit>(),
+                create: (_) => getIt<SavedCubit>(),
                 child: SavedScreen(),
               ),
             ],

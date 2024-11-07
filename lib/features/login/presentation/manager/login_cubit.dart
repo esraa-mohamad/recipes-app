@@ -45,10 +45,6 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginChangePasswordObscure());
   }
 
-  void logOut() {
-    _auth.signOut();
-  }
-
   // Dispose controllers
   void disposeControllers() {
     emailController.dispose();
