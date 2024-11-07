@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/features/details/data/model/meals_model_response.dart';
 import 'package:recipes_book_app/features/details/presentation/screen/widgets/show_youtube_video.dart';
 
@@ -14,19 +15,21 @@ class MealsDetailsListView extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemCount: mealsModelResponse.mealsDetails!.length,
-        itemBuilder: (context , index)
-        {
+        itemBuilder: (context, index) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ShowYoutubeVideo(mealsDetails: mealsModelResponse.mealsDetails![index],),
-              SizedBox(
-                height: 24,
+              ShowYoutubeVideo(
+                mealsDetails: mealsModelResponse.mealsDetails![index],
               ),
-              MealDetails(mealDetails: mealsModelResponse.mealsDetails![index],),
+              SizedBox(
+                height: 24.h,
+              ),
+              MealDetails(
+                mealDetails: mealsModelResponse.mealsDetails![index],
+              ),
             ],
           );
-        }
-    );
+        });
   }
 }

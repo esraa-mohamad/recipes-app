@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/core/widgets/shimmer_widget.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
@@ -28,7 +29,7 @@ class MealsSliverList extends StatelessWidget {
           if (isLoading) {
             return ShimmerWidget(
               widget: Container(
-                height: 120,
+                height: 120.h,
                 color: Colors.grey[300],
               ),
             );
@@ -40,7 +41,7 @@ class MealsSliverList extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10.r),
                   color: const Color.fromARGB(255, 234, 234, 234),
                 ),
                 child: Column(
@@ -48,11 +49,11 @@ class MealsSliverList extends StatelessWidget {
                   children: [
                     Image.network(
                       meals!.mealData[index].img,
-                      height: 120,
+                      height: 120.h,
                       fit: BoxFit.fitWidth,
                       width: double.infinity,
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Padding(
                       padding: const EdgeInsets.only(left: 8),
                       child: Text(
@@ -60,7 +61,7 @@ class MealsSliverList extends StatelessWidget {
                         maxLines: 2,
                         style: AppTextStyle.font14WhiteSemiBold.copyWith(
                           color: Colors.black,
-                          fontSize: 17,
+                          fontSize: 17.w,
                           fontWeight: FontWeight.normal,
                           overflow: TextOverflow.ellipsis,
                         ),

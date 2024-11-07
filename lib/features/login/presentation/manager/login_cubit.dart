@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,36 +14,35 @@ class LoginCubit extends Cubit<LoginState> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final AppPreferences appPreferences = getIt<AppPreferences>();
 
-
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  Future<User?> loginWithEmailAndPassword() async{
+  Future<User?> loginWithEmailAndPassword() async {
     emit(LoginLoading());
     try {
-      UserCredential userCredential =await _auth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
-      if(userCredential.user ==null){
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      if (userCredential.user == null) {
         emit(LoginFailed(message: "Not valid email or password"));
-
-      }else {
-        emit(LoginSuccess());
+      } else {
+        emit(LoginSuccess(userCredential.user));
         appPreferences.setUserLoggedIn();
       }
       return userCredential.user;
-    }catch(error){
+    } catch (error) {
       emit(LoginFailed(message: error.toString()));
     }
     return null;
   }
-  bool isPasswordObscure = false ;
-  void passwordObscureChange(){
+
+  bool isPasswordObscure = false;
+
+  void passwordObscureChange() {
     isPasswordObscure = !isPasswordObscure;
     emit(LoginChangePasswordObscure());
-  }
-
-  void logOut(){
-    _auth.signOut();
   }
 
   // Dispose controllers

@@ -20,7 +20,6 @@ class SplashBody extends StatefulWidget {
 
 class _SplashBodyState extends State<SplashBody>
     with SingleTickerProviderStateMixin {
-
   final AppPreferences appPreferences = getIt<AppPreferences>();
   @override
   void initState() {
@@ -36,20 +35,31 @@ class _SplashBodyState extends State<SplashBody>
   }
 
   _goNext() {
-    appPreferences.isUserLoggedIn().then((isLoggedIn){
-      if(isLoggedIn){
-       if(context.mounted) Navigator.of(context).pushReplacementNamed(Routes.bottomBar);
-      }else {
-        appPreferences.isOnBoardingScreenViewed().then((isViewObBoarding){
-          if(isViewObBoarding){
-            if(context.mounted) Navigator.of(context).pushReplacementNamed(Routes.loginScreen);
-          }else {
-            if(context.mounted) Navigator.of(context).pushReplacementNamed(Routes.onBoardingScreen);
+    appPreferences.isUserLoggedIn().then(
+      (isLoggedIn) {
+        if (isLoggedIn) {
+          if (context.mounted) {
+            Navigator.of(context).pushReplacementNamed(Routes.bottomBar);
           }
-        },
-        );
-      }
-    },);
+        } else {
+          appPreferences.isOnBoardingScreenViewed().then(
+            (isViewObBoarding) {
+              if (isViewObBoarding) {
+                if (context.mounted) {
+                  Navigator.of(context)
+                      .pushReplacementNamed(Routes.loginScreen);
+                }
+              } else {
+                if (context.mounted) {
+                  Navigator.of(context)
+                      .pushReplacementNamed(Routes.onBoardingScreen);
+                }
+              }
+            },
+          );
+        }
+      },
+    );
   }
 
   @override
@@ -60,8 +70,8 @@ class _SplashBodyState extends State<SplashBody>
       child: Center(
           child: Image.asset(
         AppImages.splashLogo,
-        width: 85.h,
-        height: 85.h,
+        width: 85.w.h,
+        height: 85.h.h,
       )),
     );
   }

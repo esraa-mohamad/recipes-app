@@ -19,12 +19,12 @@ class RegisterBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
-        if(state is RegisterLoading){
+        if (state is RegisterLoading) {
           loadingDialog(context);
-        }else if(state is RegisterSuccess){
+        } else if (state is RegisterSuccess) {
           Navigator.of(context).pop();
           Navigator.of(context).pushReplacementNamed(Routes.loginScreen);
-        }else if(state is RegisterFailed){
+        } else if (state is RegisterFailed) {
           Navigator.of(context).pop();
           errorDialog(context, state.message);
         }
@@ -41,27 +41,25 @@ class RegisterBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 50,
+                    height: 50.h,
                   ),
                   Text(
                     'Sign Up',
                     style: AppTextStyle.font30DarkGreenBold,
                   ),
                   SizedBox(
-                    height: 12.h,
+                    height: 12.h.h,
                   ),
-                
-                
                   SizedBox(
-                    height: 50.h,
+                    height: 50.h.h,
                   ),
                   RegisterForm(),
                   SizedBox(
-                    height: 50.h,
+                    height: 50.h.h,
                   ),
                   RegisterButton(),
                   SizedBox(
-                    height: 50.h,
+                    height: 50.h.h,
                   ),
                   Center(
                     child: RichText(
@@ -74,8 +72,7 @@ class RegisterBody extends StatelessWidget {
                                 style: AppTextStyle.font14OrangeMedium,
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Navigator.of(context)
-                                        .pushReplacementNamed(
+                                    Navigator.of(context).pushReplacementNamed(
                                         Routes.loginScreen);
                                   })
                           ]),

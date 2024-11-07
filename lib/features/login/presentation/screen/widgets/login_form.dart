@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/features/login/presentation/manager/login_cubit.dart';
@@ -6,8 +5,7 @@ import 'package:recipes_book_app/features/login/presentation/manager/login_cubit
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
-
-class LoginForm extends StatelessWidget{
+class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
 
   @override
@@ -27,13 +25,13 @@ class LoginForm extends StatelessWidget{
               size: 24.sp,
             ),
             validator: (value) {
-              if(value == null || value.isEmpty){
+              if (value == null || value.isEmpty) {
                 return "Should enter email";
               }
             },
           ),
           SizedBox(
-            height: 16,
+            height: 16.h,
           ),
           CustomTextFormField(
             controller: loginCubit.passwordController,
@@ -49,14 +47,15 @@ class LoginForm extends StatelessWidget{
                 loginCubit.passwordObscureChange();
               },
               icon: Icon(
-                loginCubit.isPasswordObscure ? Icons.visibility_off :
-                Icons.visibility,
+                loginCubit.isPasswordObscure
+                    ? Icons.visibility_off
+                    : Icons.visibility,
                 size: 24.sp,
                 color: AppColor.cadetGrey,
               ),
             ),
             validator: (value) {
-              if(value == null || value.isEmpty){
+              if (value == null || value.isEmpty) {
                 return "Should enter password";
               }
             },
@@ -65,5 +64,4 @@ class LoginForm extends StatelessWidget{
       ),
     );
   }
-
 }

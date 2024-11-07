@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/features/meals_screen/presentation/screen/widgets/meals_body.dart';
 
@@ -25,7 +26,7 @@ class MealsScreen extends StatelessWidget {
         backgroundColor: AppColor.mainOrange,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:   EdgeInsets.all(16.0.r),
         child: MealsBody(),
       ),
     );

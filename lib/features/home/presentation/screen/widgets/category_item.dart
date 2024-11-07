@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/core/widgets/shimmer_widget.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
@@ -27,13 +28,12 @@ class CategoryItemState extends State<CategoryItem> {
             children: List.generate(
               14,
               (index) => ShimmerWidget(
-               
                 widget: Container(
-                  width: 100,
-                  height: 40,
+                  width: 100.w,
+                  height: 40.h,
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(15.0),
+                    borderRadius: BorderRadius.circular(15.0.r),
                   ),
                 ),
               ),
@@ -62,7 +62,7 @@ class CategoryItemState extends State<CategoryItem> {
                     color: category.name == selectedItem
                         ? Colors.orange
                         : AppColor.lightSlateGray,
-                    borderRadius: BorderRadius.circular(15.0),
+                    borderRadius: BorderRadius.circular(15.0.r),
                   ),
                   child: Text(
                     category.name,

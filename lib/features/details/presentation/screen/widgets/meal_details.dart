@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
 import 'package:recipes_book_app/core/theme/font_family_helper.dart';
 
@@ -93,11 +94,13 @@ class MealDetails extends StatelessWidget {
         'ingredient': mealDetails!.ingredient20,
         'measure': mealDetails!.measure20,
       },
-    ].where((item) =>
-    item['ingredient'] != null &&
-        item['ingredient'].toString().isNotEmpty &&
-        item['measure'] != null &&
-        item['measure'].toString().isNotEmpty).toList();
+    ]
+        .where((item) =>
+            item['ingredient'] != null &&
+            item['ingredient'].toString().isNotEmpty &&
+            item['measure'] != null &&
+            item['measure'].toString().isNotEmpty)
+        .toList();
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 24,
@@ -107,7 +110,7 @@ class MealDetails extends StatelessWidget {
         children: [
           Text(mealDetails!.name, style: AppTextStyle.font18DarkGreenSemiBold),
           SizedBox(
-            height: 16,
+            height: 16.h,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,16 +126,16 @@ class MealDetails extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 16,
+            height: 16.h,
           ),
           Text('Description', style: AppTextStyle.font16DarkGreenSemiBold),
           SizedBox(
-            height: 16,
+            height: 16.h,
           ),
           Text(mealDetails!.description,
               style: AppTextStyle.font14SlateGrayRegular),
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
           Text(
             'Ingredients and Amount',
@@ -141,7 +144,7 @@ class MealDetails extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 16,
+            height: 16.h,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -170,11 +173,12 @@ class MealDetails extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(
-            AppImages.dotePoint ,
-            width: 5,
-            height: 5,
-          ),          SizedBox(
-            width: 8,
+            AppImages.dotePoint,
+            width: 5.w,
+            height: 5.h,
+          ),
+          SizedBox(
+            width: 8.w,
           ),
           RichText(
             text: TextSpan(

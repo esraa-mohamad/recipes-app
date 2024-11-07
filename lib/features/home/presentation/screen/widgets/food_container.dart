@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
 import 'package:recipes_book_app/core/widgets/shimmer_widget.dart';
@@ -17,7 +18,7 @@ class FoodContainer extends StatelessWidget {
       builder: (context, state) {
         if (state is FoodLoadingState) {
           return SizedBox(
-            height: 350,
+            height: 350.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 5,
@@ -25,11 +26,11 @@ class FoodContainer extends StatelessWidget {
                 return ShimmerWidget(
                   widget: Container(
                     margin: EdgeInsets.symmetric(horizontal: 8),
-                    width: 350,
-                    height: 350,
+                    width: 350.w,
+                    height: 350.h,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(5.r),
                     ),
                   ),
                 );
@@ -43,7 +44,7 @@ class FoodContainer extends StatelessWidget {
             return const Center(child: Text('No Food available.'));
           }
           return SizedBox(
-            height: 350,
+            height: 350.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: food.length,
@@ -55,11 +56,11 @@ class FoodContainer extends StatelessWidget {
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 8),
-                    padding: EdgeInsets.all(8),
-                    width: 350,
+                    padding: EdgeInsets.all(8.r),
+                    width: 350.w,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 247, 246, 246),
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(5.r),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,10 +68,10 @@ class FoodContainer extends StatelessWidget {
                         Image.network(
                           food[index].img,
                           fit: BoxFit.fitWidth,
-                          height: 250,
+                          height: 250.h,
                           width: double.infinity,
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: Column(

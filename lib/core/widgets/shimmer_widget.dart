@@ -13,7 +13,7 @@ class ShimmerWidget extends StatelessWidget {
       highlightColor: Colors.grey[100]!,
       child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+           borderRadius:  BorderRadius.circular(10),
             color: Colors.grey[300],
           ),
           child: widget),

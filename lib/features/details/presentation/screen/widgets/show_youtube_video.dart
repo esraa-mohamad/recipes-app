@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipes_book_app/features/details/data/model/meals_model_response.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -35,8 +36,8 @@ class _ShowYoutubeVideoState extends State<ShowYoutubeVideo> {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.only(
-        topRight: Radius.circular(12),
-        topLeft: Radius.circular(12),
+        topRight: Radius.circular(12.r),
+        topLeft: Radius.circular(12.r),
       ),
       child: YoutubePlayerBuilder(
           player: YoutubePlayer(

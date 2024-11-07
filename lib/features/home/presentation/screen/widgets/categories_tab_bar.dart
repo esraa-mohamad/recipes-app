@@ -18,7 +18,7 @@ class CategoryTabBar extends StatefulWidget {
 
 class CategoryTabBarState extends State<CategoryTabBar> {
   late AreaCubit areaCubit;
-  
+
   @override
   void initState() {
     super.initState();
@@ -26,7 +26,8 @@ class CategoryTabBarState extends State<CategoryTabBar> {
     areaCubit.stream.listen((state) {
       if (state is AreaSuccessState && state.areaModel.areaData.isNotEmpty) {
         // ignore: use_build_context_synchronously
-        FoodCubit.get(context).getAllFoods(state.areaModel.areaData[0].areaName);
+        FoodCubit.get(context)
+            .getAllFoods(state.areaModel.areaData[0].areaName);
       }
     });
   }
@@ -42,39 +43,39 @@ class CategoryTabBarState extends State<CategoryTabBar> {
             child: DefaultTabController(
               length: 4,
               child: SizedBox(
-                height: 400,
+                height: 400.h,
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: TabBar(    tabAlignment: TabAlignment.start,
-                      dividerHeight: 0.h,
-                      isScrollable: true,
-                      labelColor: Colors.black,
-                      labelStyle: AppTextStyle.font16DarkGreenSemiBold,
-                      unselectedLabelStyle: AppTextStyle.font14SlateGrayRegular,
-                      unselectedLabelColor: AppColor.slateGray,
-                      indicator: UnderlineTabIndicator(
-                        borderSide: BorderSide(
-                          color: AppColor.mainOrange,
-                          width: 1.w,
+                      padding:   EdgeInsets.only(top: 5),
+                      child: TabBar(dividerHeight: 0.h,
+                        tabAlignment: TabAlignment.start,
+                         isScrollable: true,
+                        labelColor: Colors.black,
+                        labelStyle: AppTextStyle.font16DarkGreenSemiBold,
+                        unselectedLabelStyle:
+                            AppTextStyle.font14SlateGrayRegular,
+                        unselectedLabelColor: AppColor.slateGray,
+                        indicator: UnderlineTabIndicator(
+                          borderSide: BorderSide(
+                            color: AppColor.mainOrange,
+                            width: 1.w.w,
+                          ),
                         ),
-                      ),
-                         tabs: List.generate(
+                        tabs: List.generate(
                           4,
                           (index) => Container(
-                            width: 100.w,
-                            height: 30.h,
+                            width: 100.w.w,
+                            height: 30.h.h,
                             margin: EdgeInsets.symmetric(horizontal: 8.w),
                             decoration: BoxDecoration(
                               color: Colors.grey[300],
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.r),
                             ),
                           ),
                         ),
                       ),
                     ),
-                   
                   ],
                 ),
               ),
@@ -90,7 +91,7 @@ class CategoryTabBarState extends State<CategoryTabBar> {
             child: DefaultTabController(
               length: areas.length,
               child: SizedBox(
-                height: 400,
+                height: 400.h,
                 child: Column(
                   children: <Widget>[
                     TabBar(
@@ -107,10 +108,12 @@ class CategoryTabBarState extends State<CategoryTabBar> {
                       indicator: UnderlineTabIndicator(
                         borderSide: BorderSide(
                           color: AppColor.mainOrange,
-                          width: 1.w,
+                          width: 1.w.w,
                         ),
                       ),
-                      tabs: areas.map((area) => Tab(text: area.areaName)).toList(),
+                      tabs: areas
+                          .map((area) => Tab(text: area.areaName))
+                          .toList(),
                     ),
                     Expanded(
                       child: TabBarView(

@@ -14,8 +14,9 @@ class SearchItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.of(context).pushNamed(Routes.detailsScreen , arguments: mealsData!.id);
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(Routes.detailsScreen, arguments: mealsData!.id);
       },
       child: Container(
         width: double.infinity,
@@ -29,18 +30,17 @@ class SearchItem extends StatelessWidget {
         child: Row(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(8.r),
-                bottomLeft: Radius.circular(8.r),
-              ),
-              child: CustomImageNetwork(imagePath: mealsData!.mealImage)
-            ),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8.r),
+                  bottomLeft: Radius.circular(8.r),
+                ),
+                child: CustomImageNetwork(imagePath: mealsData!.mealImage)),
             SizedBox(
-              width: 16.w,
+              width: 16.w.w,
             ),
             Expanded(
               child: Text(
-                  mealsData!.mealName ,
+                mealsData!.mealName,
                 style: AppTextStyle.font14DarkGreenMedium,
                 maxLines: 2,
                 textAlign: TextAlign.center,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipes_book_app/core/widgets/shimmer_widget.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:recipes_book_app/core/widgets/custom_error_message.dart';
 import 'package:recipes_book_app/features/details/presentation/manager/details_cubit.dart';
@@ -28,10 +30,8 @@ class MealsDetailsDataBlocBuilder extends StatelessWidget {
             child: CustomMessage(error: state.apiErrorModel.message.toString()),
           );
         } else {
-          return Shimmer.fromColors(
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.grey[100]!,
-            child: Column(
+          return ShimmerWidget(
+            widget: Column(
               children: List.generate(1, (index) => ShimmerPlaceholder()),
             ),
           );
@@ -51,10 +51,10 @@ class ShimmerPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding:   EdgeInsets.all(8.0.r),
       child: Container(
         width: double.infinity,
-        height: 300,
+        height: 300.h,
         color: Colors.grey[300],
       ),
     );

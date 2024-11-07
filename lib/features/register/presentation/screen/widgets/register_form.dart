@@ -4,8 +4,7 @@ import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/core/widgets/custom_text_form_field.dart';
 import 'package:recipes_book_app/features/register/presentation/manager/register_cubit.dart';
 
-
-class RegisterForm extends StatelessWidget{
+class RegisterForm extends StatelessWidget {
   const RegisterForm({super.key});
 
   @override
@@ -31,7 +30,7 @@ class RegisterForm extends StatelessWidget{
             },
           ),
           SizedBox(
-            height: 16,
+            height: 16.h,
           ),
           CustomTextFormField(
             controller: registerCubit.emailController,
@@ -48,7 +47,7 @@ class RegisterForm extends StatelessWidget{
             },
           ),
           SizedBox(
-            height: 16,
+            height: 16.h,
           ),
           CustomTextFormField(
             controller: registerCubit.passwordController,
@@ -78,7 +77,7 @@ class RegisterForm extends StatelessWidget{
             },
           ),
           SizedBox(
-            height: 16,
+            height: 16.h,
           ),
           CustomTextFormField(
             controller: registerCubit.confirmPasswordController,

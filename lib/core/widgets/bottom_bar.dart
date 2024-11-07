@@ -20,11 +20,6 @@ class BottomNavBarState extends State<BottomNavBar> {
     HomeScreen(),
     SearchScreen(),
     SavedScreen(),
-    Center(
-      child: Text(
-        'Profile Screen',
-      ),
-    ),
   ];
 
   @override
@@ -45,11 +40,6 @@ class BottomNavBarState extends State<BottomNavBar> {
           ),
           Icon(
             Icons.bookmark,
-            size: 30,
-            color: Colors.white,
-          ),
-          Icon(
-            Icons.person,
             size: 30,
             color: Colors.white,
           ),

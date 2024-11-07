@@ -18,7 +18,7 @@ class SearchBody extends StatelessWidget {
           children: [
             SearchTextField(),
             SizedBox(
-              height: 40.h,
+              height: 40.h.h,
             ),
             Expanded(
               child: SearchItemsListViewBlocBuilder(),
