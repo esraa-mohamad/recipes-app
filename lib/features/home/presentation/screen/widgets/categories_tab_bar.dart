@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/area_cubit/area_cubit.dart';
@@ -17,14 +18,13 @@ class CategoryTabBar extends StatefulWidget {
 
 class CategoryTabBarState extends State<CategoryTabBar> {
   late AreaCubit areaCubit;
+  
   @override
   void initState() {
     super.initState();
-    // Get the food items for the first area by default when the widget is created
-     areaCubit = AreaCubit.get(context);
+    areaCubit = AreaCubit.get(context);
     areaCubit.stream.listen((state) {
       if (state is AreaSuccessState && state.areaModel.areaData.isNotEmpty) {
-        // Fetch foods for the first area
         // ignore: use_build_context_synchronously
         FoodCubit.get(context).getAllFoods(state.areaModel.areaData[0].areaName);
       }
@@ -36,12 +36,52 @@ class CategoryTabBarState extends State<CategoryTabBar> {
     return BlocBuilder<AreaCubit, AreaState>(
       builder: (context, state) {
         if (state is AreaLoadingState) {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Shimmer.fromColors(
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.grey[100]!,
+            child: DefaultTabController(
+              length: 4,
+              child: SizedBox(
+                height: 400,
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: TabBar(    tabAlignment: TabAlignment.start,
+                      dividerHeight: 0.h,
+                      isScrollable: true,
+                      labelColor: Colors.black,
+                      labelStyle: AppTextStyle.font16DarkGreenSemiBold,
+                      unselectedLabelStyle: AppTextStyle.font14SlateGrayRegular,
+                      unselectedLabelColor: AppColor.slateGray,
+                      indicator: UnderlineTabIndicator(
+                        borderSide: BorderSide(
+                          color: AppColor.mainOrange,
+                          width: 1.w,
+                        ),
+                      ),
+                         tabs: List.generate(
+                          4,
+                          (index) => Container(
+                            width: 100.w,
+                            height: 30.h,
+                            margin: EdgeInsets.symmetric(horizontal: 8.w),
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                   
+                  ],
+                ),
+              ),
+            ),
           );
         } else if (state is AreaSuccessState) {
           final areas = state.areaModel.areaData;
-
           if (areas.isEmpty) {
             return const Center(child: Text('No categories available.'));
           }
@@ -70,9 +110,7 @@ class CategoryTabBarState extends State<CategoryTabBar> {
                           width: 1.w,
                         ),
                       ),
-                      tabs: areas
-                          .map((area) => Tab(text: area.areaName))
-                          .toList(),
+                      tabs: areas.map((area) => Tab(text: area.areaName)).toList(),
                     ),
                     Expanded(
                       child: TabBarView(

@@ -50,10 +50,8 @@ class RegisterBody extends StatelessWidget {
                   SizedBox(
                     height: 12.h,
                   ),
-                  Text(
-                    'Create new account to continue',
-                    style: AppTextStyle.font14SlateGrayRegular,
-                  ),
+                
+                
                   SizedBox(
                     height: 50.h,
                   ),

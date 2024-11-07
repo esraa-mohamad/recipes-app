@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/theme/app_text_style.dart';
+import 'package:recipes_book_app/core/widgets/shimmer_widget.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_cubit.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/food_cubit/food_state.dart';
 import 'package:recipes_book_app/features/home/presentation/screen/widgets/icon_change_bloc_consumer.dart';
@@ -15,8 +16,25 @@ class FoodContainer extends StatelessWidget {
     return BlocBuilder<FoodCubit, FoodState>(
       builder: (context, state) {
         if (state is FoodLoadingState) {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return SizedBox(
+            height: 350,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return ShimmerWidget(
+                  widget: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 8),
+                    width: 350,
+                    height: 350,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                );
+              },
+            ),
           );
         } else if (state is FoodSuccessState) {
           final food = state.foodModel.foodData;
@@ -36,6 +54,7 @@ class FoodContainer extends StatelessWidget {
                         arguments: food[index].id);
                   },
                   child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 8),
                     padding: EdgeInsets.all(8),
                     width: 350,
                     decoration: BoxDecoration(
@@ -43,7 +62,6 @@ class FoodContainer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Image.network(
@@ -52,13 +70,10 @@ class FoodContainer extends StatelessWidget {
                           height: 250,
                           width: double.infinity,
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        SizedBox(height: 20),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
@@ -91,7 +106,7 @@ class FoodContainer extends StatelessWidget {
           );
         } else if (state is FoodFailureState) {
           return const Center(
-            child: Text('Failed to load categories.'),
+            child: Text('Failed to load food items.'),
           );
         }
         return Container();

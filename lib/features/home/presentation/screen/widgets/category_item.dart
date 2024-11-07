@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipes_book_app/core/widgets/shimmer_widget.dart';
 import 'package:recipes_book_app/core/routes/routes.dart';
 import 'package:recipes_book_app/core/theme/app_color.dart';
 import 'package:recipes_book_app/features/home/presentation/manager/category_cubit/category_cubit.dart';
@@ -20,7 +21,24 @@ class CategoryItemState extends State<CategoryItem> {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
         if (state is CategoryLoadingState) {
-          return Center(child: CircularProgressIndicator());
+          return Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children: List.generate(
+              14,
+              (index) => ShimmerWidget(
+               
+                widget: Container(
+                  width: 100,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                ),
+              ),
+            ),
+          );
         } else if (state is CategorySuccessState) {
           final categories = state.categoryModel.categroyData;
 

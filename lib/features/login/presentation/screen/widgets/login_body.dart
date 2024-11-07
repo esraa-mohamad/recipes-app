@@ -17,14 +17,14 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginCubit,LoginState>(
+    return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
-        if(state is LoginLoading){
+        if (state is LoginLoading) {
           loadingDialog(context);
-        }else if(state is LoginSuccess){
+        } else if (state is LoginSuccess) {
           Navigator.of(context).pop();
           Navigator.of(context).pushReplacementNamed(Routes.bottomBar);
-        }else if(state is LoginFailed){
+        } else if (state is LoginFailed) {
           Navigator.of(context).pop();
           errorDialog(context, state.message);
         }
@@ -50,10 +50,6 @@ class LoginBody extends StatelessWidget {
                   SizedBox(
                     height: 12.h,
                   ),
-                  Text(
-                    'Enter email and password to login',
-                    style: AppTextStyle.font14SlateGrayRegular,
-                  ),
                   SizedBox(
                     height: 100.h,
                   ),
@@ -76,8 +72,7 @@ class LoginBody extends StatelessWidget {
                                 style: AppTextStyle.font14OrangeMedium,
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Navigator.of(context)
-                                        .pushReplacementNamed(
+                                    Navigator.of(context).pushReplacementNamed(
                                         Routes.registerScreen);
                                   })
                           ]),
