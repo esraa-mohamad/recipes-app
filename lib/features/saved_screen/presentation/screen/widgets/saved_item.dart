@@ -14,7 +14,8 @@ class SavedItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.detailsScreen);
+         Navigator.pushNamed(context, Routes.detailsScreen,
+            arguments: foodData.id);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -25,11 +26,9 @@ class SavedItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12),
-                topRight: Radius.circular(12)
-              ),
+                  topLeft: Radius.circular(12), topRight: Radius.circular(12)),
               child: CustomImageNetwork(
-                  imagePath:foodData.img,
+                imagePath: foodData.img,
                 width: double.infinity,
                 height: 120,
               ),
@@ -45,8 +44,7 @@ class SavedItem extends StatelessWidget {
                     foodData.name,
                     maxLines: 4,
                     textAlign: TextAlign.center,
-                    style: AppTextStyle
-                        .font14DarkGreenMedium,
+                    style: AppTextStyle.font14DarkGreenMedium,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
