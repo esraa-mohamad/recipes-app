@@ -21,6 +21,13 @@ class AppPreferences{
     return _sharedPreferences.getBool(AppPrefsConstants.isUserLoggedIn)??false;
   }
 
+  Future<void> setLoginName(String value)async{
+    _sharedPreferences.setString(AppPrefsConstants.getUserLoggedName, value);
+  }
+  String getLoginName() {
+    return _sharedPreferences.getString(AppPrefsConstants.getUserLoggedName) ?? 'Gust';
+  }
+
 
   // Clear user data
   Future<void> clearUserData() async {

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,14 +8,17 @@ import 'package:recipes_book_app/features/login/presentation/manager/login_cubit
 import 'package:recipes_book_app/features/login/presentation/manager/login_state.dart';
 import 'package:recipes_book_app/features/login/presentation/screen/widgets/login_button.dart';
 
+import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/routes/routes.dart';
+import '../../../../../core/shared_pref/app_prefs.dart';
 import '../../../../../core/theme/app_text_style.dart';
 import '../../../../../core/widgets/error_dialog.dart';
 import '../../../../../core/widgets/loading_dialog.dart';
 import 'login_form.dart';
 
 class LoginBody extends StatelessWidget {
-  const LoginBody({super.key});
+   LoginBody({super.key});
+  final AppPreferences appPreferences = getIt<AppPreferences>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +28,9 @@ class LoginBody extends StatelessWidget {
           loadingDialog(context);
         }else if(state is LoginSuccess){
           Navigator.of(context).pop();
+          final displayName = state.user!.displayName ?? 'Guest';
+          log("Name : $displayName");
+          appPreferences.setLoginName(displayName);
           Navigator.of(context).pushReplacementNamed(Routes.bottomBar);
         }else if(state is LoginFailed){
           Navigator.of(context).pop();
